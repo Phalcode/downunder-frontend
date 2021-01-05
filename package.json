@@ -1,6 +1,7 @@
 {
   "name": "lowbob77-client",
   "version": "0.0.0",
+  "authors": ["Alfagun74"],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
