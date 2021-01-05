@@ -1,4 +1,5 @@
-module.exports = (isProd) => ({
+module.exports = function (isProd) {
+  return ({
     prefix: '',
     purge: {
       enabled: isProd,
@@ -6,7 +7,7 @@ module.exports = (isProd) => ({
         '**/*.{html,ts}',
       ]
     },
-    darkMode: false, // or 'media' or 'class'
+    darkMode: false,
     theme: {
       extend: {},
     },
@@ -14,4 +15,5 @@ module.exports = (isProd) => ({
       extend: {},
     },
     plugins: [],
-});
+  });
+};
