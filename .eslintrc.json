@@ -1,8 +1,6 @@
 {
   "root": true,
-  "ignorePatterns": [
-    "projects/**/*"
-  ],
+  "ignorePatterns": ["projects/**/*"],
   "plugins": ["jest"],
   "rules": {
     "jest/no-disabled-tests": "warn",
@@ -14,14 +12,11 @@
   "env": {
     "jest/globals": true
   },
-  "overrides": [{
-      "files": [
-        "*.ts"
-      ],
+  "overrides": [
+    {
+      "files": ["*.ts"],
       "parserOptions": {
-        "project": [
-          "tsconfig.json"
-        ],
+        "project": ["tsconfig.json"],
         "createDefaultProgram": true
       },
       "extends": [
@@ -55,9 +50,7 @@
       }
     },
     {
-      "files": [
-        "*.html"
-      ],
+      "files": ["*.html"],
       "extends": [
         "plugin:@angular-eslint/template/recommended",
         "prettier/@typescript-eslint",

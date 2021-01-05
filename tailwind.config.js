@@ -1,19 +1,17 @@
 module.exports = function (isProd) {
-  return ({
-    prefix: '',
+  return {
+    prefix: "",
     purge: {
       enabled: isProd,
-      content: [
-        '**/*.{html,ts}',
-      ]
+      content: ["**/*.{html,ts}"]
     },
     darkMode: false,
     theme: {
-      extend: {},
+      extend: {}
     },
     variants: {
-      extend: {},
+      extend: {}
     },
-    plugins: [],
-  });
+    plugins: []
+  };
 };
