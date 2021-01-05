@@ -10,7 +10,7 @@ export class StartComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  createNewSession(): void {}
+  createSession(): void {}
 
-  joinNewSession(): void {}
+  joinSession(): void {}
 }

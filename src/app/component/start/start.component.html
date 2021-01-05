@@ -12,12 +12,13 @@
       <h2 class="font-bold text-3xl mb-12">a card game clone</h2>
       <div class="flex">
         <button
-          (click)="click()"
+          (click)="createSession()"
           class="bg-blue-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-2 w-1/2"
         >
           Create Session
         </button>
         <button
+          (click)="joinSession()"
           class="bg-green-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-green-600 ml-2 w-1/2"
         >
           Join Game
