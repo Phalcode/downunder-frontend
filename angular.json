@@ -68,7 +68,9 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "browserTarget": "Lowbob77-Client:build"
+            "browserTarget": "Lowbob77-Client:build",
+            "sslKey": "ssl/key.pem",
+            "sslCert": "ssl/crt.pem"
           },
           "configurations": {
             "production": {
