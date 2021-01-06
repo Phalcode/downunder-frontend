@@ -1,5 +1,5 @@
-import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
 import { IPlayer } from "src/models/IPlayer";
@@ -37,13 +37,15 @@ export class LowbobService {
     );
   }
 
-  getPlayer(playerId: string): Observable<IPlayer> {
-    return this.http.get<IPlayer>(`${environment.baseUrl}/player/${playerId}`);
+  getPlayer(sessionId: string, playerId: string): Observable<IPlayer> {
+    return this.http.get<IPlayer>(
+      `${environment.baseUrl}/session/${sessionId}/player/${playerId}`
+    );
   }
 
-  deletePlayer(playerId: string): Observable<unknown> {
+  deletePlayer(sessionId: string, playerId: string): Observable<unknown> {
     return this.http.delete<unknown>(
-      `${environment.baseUrl}/player/${playerId}`
+      `${environment.baseUrl}/session/${sessionId}/player/${playerId}`
     );
   }
 
