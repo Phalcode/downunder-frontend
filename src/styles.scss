@@ -10,3 +10,7 @@
 ::-webkit-scrollbar-track {
   background-color: transparent;
 }
+
+.button_back {
+  transform: scaleX(-1);
+}
