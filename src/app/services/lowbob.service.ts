@@ -9,6 +9,9 @@ import { ISession } from "src/models/ISession";
   providedIn: "root"
 })
 export class LowbobService {
+  public session: ISession;
+  public player: IPlayer;
+
   constructor(private http: HttpClient) {}
 
   createSession(sessionInformation: ISession): Observable<ISession> {
