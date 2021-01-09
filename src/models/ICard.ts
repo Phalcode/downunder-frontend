@@ -1,5 +1,5 @@
 export interface ICard {
-  readonly id: string;
-  readonly description: string;
-  readonly value?: number;
+  id?: string;
+  description?: string;
+  value?: number;
 }
