@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { LowbobService } from "src/app/services/lowbob.service";
+import { IPlayer } from "src/models/IPlayer";
 import { ISession } from "src/models/ISession";
 
 @Component({
@@ -18,10 +19,13 @@ export class JoinComponent {
   joinSession(): void {
     this.service.getSession(this.sessionId).subscribe((session: ISession) => {
       this.service.session = session;
+      this.service
+        .createPlayer(this.sessionId, { username: this.username })
+        .subscribe((player: IPlayer) => (this.service.player = player));
       void this.router.navigate(["/game"]);
-      // TODO: Create Player
-      // TODO: Routing Error Capture?
-      // TODO: Error Handling, Session not Found
+      // TODO: ERR MAX PLAYERS
+      // TODO: ERR SAME NAME
+      // TODO: ERR SESSION NOT FOUND
     });
   }
 }

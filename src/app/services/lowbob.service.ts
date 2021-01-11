@@ -33,9 +33,12 @@ export class LowbobService {
     );
   }
 
-  createPlayer(playerInformation: IPlayer): Observable<IPlayer> {
+  createPlayer(
+    sessionId: string,
+    playerInformation: IPlayer
+  ): Observable<IPlayer> {
     return this.http.post<IPlayer>(
-      `${environment.baseUrl}/player`,
+      `${environment.baseUrl}/session/${sessionId}/player`,
       playerInformation
     );
   }
