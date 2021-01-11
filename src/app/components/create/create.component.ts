@@ -30,7 +30,8 @@ export class CreateComponent {
       })
       .subscribe((session: ISession) => {
         this.service.session = session;
-        void this.router.navigate(["/game"]);
+        void this.router.navigate(["/join"]);
+        // TODO: Error Handling, Session not Found
       });
   }
 }

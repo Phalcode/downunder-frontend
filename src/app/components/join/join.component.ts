@@ -10,13 +10,18 @@ import { ISession } from "src/models/ISession";
 })
 export class JoinComponent {
   sessionId = "";
-  constructor(private service: LowbobService, private router: Router) {}
+  username = "";
+  constructor(private service: LowbobService, private router: Router) {
+    this.sessionId = service.session.id ?? "";
+  }
 
   joinSession(): void {
     this.service.getSession(this.sessionId).subscribe((session: ISession) => {
       this.service.session = session;
       void this.router.navigate(["/game"]);
+      // TODO: Create Player
       // TODO: Routing Error Capture?
+      // TODO: Error Handling, Session not Found
     });
   }
 }
