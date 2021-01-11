@@ -10,20 +10,23 @@
       class="h-10 w-full rounded bg-drabya-gray border-gray-500 focus focus:border-blue-600 focus:outline-none active:outline-none active:border-blue-600 appearance-none border p-4 font-light leading-tight focus:shadow-outline"
       type="text"
       placeholder="Session Code"
+      minlength="5"
       maxlength="5"
+      required
     />
   </div>
   <!-- Username Input-->
   <label for="usernameInput" class="font-bold">Username</label>
   <div class="mb-4">
     <input
-      autofocus
       [(ngModel)]="username"
       class="h-10 w-full rounded bg-drabya-gray border-gray-500 focus focus:border-blue-600 focus:outline-none active:outline-none active:border-blue-600 appearance-none border p-4 font-light leading-tight focus:shadow-outline"
       type="text"
       placeholder="Username"
-      maxlength="32"
       id="usernameInput"
+      minlength="3"
+      maxlength="32"
+      required
     />
   </div>
   <!--Controls-->
@@ -34,8 +37,9 @@
     Abort
   </button>
   <button
+    [disabled]="!username || !sessionId"
     (click)="joinSession()"
-    class="bg-green-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-green-600 w-32 ml-1 mr-auto"
+    class="disabled:opacity-50 bg-green-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-green-600 w-32 ml-1 mr-auto"
   >
     Continue
   </button>

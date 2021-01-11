@@ -17,19 +17,23 @@
       maxlength="32"
       id="sessionNameInput"
       [(ngModel)]="sessionName"
+      minlength="3"
+      maxlength="32"
+      required
     />
   </div>
 
   <!--Max Player Slider-->
   <label for="maxplayerslider" class="font-bold">Maximum Players</label>
   <input
-    class="w-full bg-white rounded-lg overflow-hidden appearance-none h-3 cursor-pointer"
+    class="w-full bg-white rounded-lg overflow-hidden border-gray-500 focus focus:border-blue-600 focus:outline-none active:outline-none active:border-blue-600 appearance-none h-3 cursor-pointer"
     type="range"
     min="2"
     max="8"
     value="2"
     id="maxplayerslider"
     [(ngModel)]="maxPlayers"
+    required
   />
   <div class="flex justify-between mt-2 mb-4 text-xs text-gray-600 font-bold">
     <span class="w-8 text-left"> II</span>
@@ -61,6 +65,9 @@
         value="0"
         min="1"
         max="100"
+        minlength="1"
+        maxlength="2"
+        required
       />
       <button
         class="bg-gray-300 text-gray-600 hover:text-gray-600 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer"
@@ -80,8 +87,9 @@
       </button>
       <span class="flex-grow"></span>
       <button
+        [disabled]="!sessionName"
         (click)="createSession()"
-        class="bg-green-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-green-600 w-32 ml-1"
+        class="disabled:opacity-50 bg-green-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-green-600 w-32 ml-1 disabled:opacity-50"
       >
         Continue
       </button>

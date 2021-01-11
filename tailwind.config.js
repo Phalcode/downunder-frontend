@@ -10,7 +10,7 @@ module.exports = function (isProd) {
       extend: {}
     },
     variants: {
-      extend: {}
+      extend: { opacity: ["disabled"] }
     },
     plugins: []
   };

@@ -13,7 +13,7 @@ export class JoinComponent {
   sessionId = "";
   username = "";
   constructor(private service: LowbobService, private router: Router) {
-    this.sessionId = service.session.id ?? "";
+    this.sessionId = service?.session?.id ?? "";
   }
 
   joinSession(): void {
@@ -21,8 +21,10 @@ export class JoinComponent {
       this.service.session = session;
       this.service
         .createPlayer(this.sessionId, { username: this.username })
-        .subscribe((player: IPlayer) => (this.service.player = player));
-      void this.router.navigate(["/game"]);
+        .subscribe((player: IPlayer) => {
+          this.service.player = player;
+          void this.router.navigate(["/game"]);
+        });
       // TODO: ERR MAX PLAYERS
       // TODO: ERR SAME NAME
       // TODO: ERR SESSION NOT FOUND
