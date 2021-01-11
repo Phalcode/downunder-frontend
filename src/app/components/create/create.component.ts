@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 import { LowbobService } from "src/app/services/lowbob.service";
 import { ISession } from "src/models/ISession";
 
@@ -12,7 +13,7 @@ export class CreateComponent {
   maxPlayers = 8;
   playerChips = 3;
 
-  constructor(private service: LowbobService) {}
+  constructor(private service: LowbobService, private router: Router) {}
 
   changePlayerChips(value: number): void {
     if (this.playerChips + value > 0 && this.playerChips + value < 100) {
@@ -29,6 +30,7 @@ export class CreateComponent {
       })
       .subscribe((session: ISession) => {
         this.service.session = session;
+        void this.router.navigate(["/game"]);
       });
   }
 }
