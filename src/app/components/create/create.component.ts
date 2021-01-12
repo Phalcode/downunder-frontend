@@ -15,7 +15,11 @@ export class CreateComponent {
 
   constructor(private service: LowbobService, private router: Router) {}
 
-  changePlayerChips(value: number): void {
+  changePlayerChips(value: number = 3): void {
+    if (!this.playerChips || this.playerChips?.toString().length > 1) {
+      this.playerChips = null;
+    }
+
     if (this.playerChips + value > 0 && this.playerChips + value < 100) {
       this.playerChips += value;
     }

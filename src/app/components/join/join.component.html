@@ -30,17 +30,20 @@
     />
   </div>
   <!--Controls-->
-  <button
-    [routerLink]="['/']"
-    class="bg-gray-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-red-600 w-32 mr-1 ml-auto"
-  >
-    Abort
-  </button>
-  <button
-    [disabled]="!username || !sessionId"
-    (click)="joinSession()"
-    class="disabled:opacity-50 bg-green-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-green-600 w-32 ml-1 mr-auto"
-  >
-    Continue
-  </button>
+  <div class="mt-8 flex">
+    <button
+      [routerLink]="['/']"
+      class="outline-none focus:outline-none bg-gray-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-red-600 w-32 mr-1"
+    >
+      Abort
+    </button>
+    <span class="flex-grow"></span>
+    <button
+      [disabled]="!username || !sessionId"
+      (click)="joinSession()"
+      class="outline-none focus:outline-none disabled:opacity-50 bg-green-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-green-600 w-32 ml-1 disabled:opacity-50"
+    >
+      Continue
+    </button>
+  </div>
 </div>
