@@ -15,13 +15,11 @@ export class JoinComponent {
   }
 
   joinSession(): void {
-    this.service
-      .createPlayer(this.sessionId, { username: this.username })
-      .subscribe((player: IPlayer) => {
-        this.service.player = player;
-        localStorage.setItem("playerid", player.id);
-        void this.router.navigate(["/game", this.sessionId]);
-      });
+    this.service.createPlayer(this.sessionId, { username: this.username }).subscribe((player: IPlayer) => {
+      this.service.player = player;
+      localStorage.setItem("playerid", player.id);
+      void this.router.navigate(["/game", this.sessionId]);
+    });
     // TODO: ERR MAX PLAYERS
     // TODO: ERR SAME NAME
     // TODO: ERR SESSION NOT FOUND

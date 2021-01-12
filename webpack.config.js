@@ -16,14 +16,10 @@ function patchPostCSS(webpackConfig, tailwindConfig, components = false) {
       useLoader.options.postcssOptions = (loader) => {
         const _postcssOptions = originPostcssOptions(loader);
         const insertIndex = _postcssOptions.plugins.findIndex(
-          ({ postcssPlugin }) =>
-            postcssPlugin && postcssPlugin.toLowerCase() === pluginName
+          ({ postcssPlugin }) => postcssPlugin && postcssPlugin.toLowerCase() === pluginName
         );
         if (insertIndex !== -1) {
-          _postcssOptions.plugins.splice(insertIndex, 0, [
-            "tailwindcss",
-            tailwindConfig
-          ]);
+          _postcssOptions.plugins.splice(insertIndex, 0, ["tailwindcss", tailwindConfig]);
         } else {
           console.error(`${pluginName} not found in postcss plugins`);
         }

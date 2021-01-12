@@ -24,11 +24,9 @@ export class GameComponent implements OnInit {
       this.service.getSession(this.sessionId).subscribe((session: ISession) => {
         this.service.session = session;
       });
-      this.service
-        .getPlayer(this.sessionId, this.playerId)
-        .subscribe((player: IPlayer) => {
-          this.service.player = player;
-        });
+      this.service.getPlayer(this.sessionId, this.playerId).subscribe((player: IPlayer) => {
+        this.service.player = player;
+      });
     });
   }
 }
