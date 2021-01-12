@@ -17,17 +17,14 @@ export class JoinComponent {
   }
 
   joinSession(): void {
-    this.service.getSession(this.sessionId).subscribe((session: ISession) => {
-      this.service.session = session;
-      this.service
-        .createPlayer(this.sessionId, { username: this.username })
-        .subscribe((player: IPlayer) => {
-          this.service.player = player;
-          void this.router.navigate(["/game", this.sessionId]);
-        });
-      // TODO: ERR MAX PLAYERS
-      // TODO: ERR SAME NAME
-      // TODO: ERR SESSION NOT FOUND
-    });
+    this.service
+      .createPlayer(this.sessionId, { username: this.username })
+      .subscribe((player: IPlayer) => {
+        this.service.player = player;
+        void this.router.navigate(["/game", this.sessionId]);
+      });
+    // TODO: ERR MAX PLAYERS
+    // TODO: ERR SAME NAME
+    // TODO: ERR SESSION NOT FOUND
   }
 }
