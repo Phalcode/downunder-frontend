@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: "", pathMatch: "full", component: StartComponent },
   { path: "create", component: CreateComponent },
   { path: "join", component: JoinComponent },
-  { path: "game", component: GameComponent },
+  { path: "game/:id", component: GameComponent },
   { path: "**", component: NotfoundComponent }
 ];
 

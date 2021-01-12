@@ -23,7 +23,7 @@ export class JoinComponent {
         .createPlayer(this.sessionId, { username: this.username })
         .subscribe((player: IPlayer) => {
           this.service.player = player;
-          void this.router.navigate(["/game"]);
+          void this.router.navigate(["/game", this.sessionId]);
         });
       // TODO: ERR MAX PLAYERS
       // TODO: ERR SAME NAME

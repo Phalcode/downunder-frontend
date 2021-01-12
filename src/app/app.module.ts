@@ -1,6 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -27,6 +28,7 @@ import { FormsModule } from "@angular/forms";
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    NgxJsonViewerModule,
     ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: environment.production,
       registrationStrategy: "registerImmediately"
