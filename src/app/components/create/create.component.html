@@ -55,12 +55,18 @@
         <span class="m-auto text-2xl font-thin">−</span>
       </button>
       <input
+        type="number"
         [(ngModel)]="playerChips"
         class="outline-none focus:outline-none text-center w-full bg-white font-semibold text-md hover:text-black focus:text-black md:text-basecursor-default flex items-center text-gray-700"
-        name="custom-input-number"
-        type="number"
-        onKeyUp="if(this.value>99){this.value='99';}else if(this.value<1){this.value='1';}"
+        name="custom-number-input"
+        onInput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+        value="3"
+        min="1"
+        max="99"
+        maxlength="2"
+        pattern="^[0-9]{2}$"
         required
+        appNullValue
       />
       <button
         class="bg-gray-300 text-gray-600 hover:text-gray-600 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer"

@@ -14,12 +14,11 @@ export class GameComponent implements OnInit {
   readonly refreshInterval: number = 30000;
   sessionId: string;
   playerId: string;
-  constructor(public service: LowbobService, private route: ActivatedRoute) {
-    this.sessionId = service.session?.id ?? route.snapshot.paramMap.get("id");
-    this.playerId = service.player?.id ?? localStorage.getItem("playerid");
-  }
+  constructor(public service: LowbobService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.sessionId = this.route.snapshot.paramMap.get("id") ?? this.service.session?.id;
+    this.playerId = localStorage.getItem("playerid") ?? this.service.player?.id;
     timer(0, this.refreshInterval).subscribe(() => {
       this.service.getSession(this.sessionId).subscribe((session: ISession) => {
         this.service.session = session;
