@@ -13,10 +13,10 @@ import { JoinComponent } from "./components/join/join.component";
 import { GameComponent } from "./components/game/game.component";
 import { NotfoundComponent } from "./components/notfound/notfound.component";
 import { FormsModule } from "@angular/forms";
-import { NullDefaultValueDirective } from "./directives/null-default-value.directive";
+import { NullToDefaultDirective } from "./directives/nullToDefault";
 
 @NgModule({
-  declarations: [AppComponent, StartComponent, CreateComponent, JoinComponent, GameComponent, NotfoundComponent, NullDefaultValueDirective],
+  declarations: [AppComponent, StartComponent, CreateComponent, JoinComponent, GameComponent, NotfoundComponent, NullToDefaultDirective],
   imports: [
     BrowserModule,
     AppRoutingModule,
