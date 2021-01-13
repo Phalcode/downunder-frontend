@@ -11,7 +11,9 @@ export class NullToDefaultDirective {
 
   @HostListener("input", ["$event.target"])
   onEvent(target: HTMLInputElement): void {
-    console.log(this.defaultVal);
-    this.control.viewToModelUpdate(target.value === "" ? Number.parseInt(this.defaultVal) : Number.parseInt(target.value));
+    if (!target.value || Number.parseInt(target.value) < 1) {
+      target.value = "";
+      this.control.viewToModelUpdate(Number.parseInt(this.defaultVal));
+    }
   }
 }
