@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { LowbobService } from "src/app/services/lowbob.service";
 import { IPlayer } from "src/models/IPlayer";
 @Component({
@@ -10,14 +10,14 @@ import { IPlayer } from "src/models/IPlayer";
 export class JoinComponent {
   sessionId = "";
   username = "";
-  constructor(private service: LowbobService, private router: Router) {
-    this.sessionId = service.session?.id ?? "";
+  constructor(private service: LowbobService, private router: Router, private route: ActivatedRoute) {
+    this.sessionId = this.route.snapshot.paramMap.get("sessionId") ?? this.service.session?.id ?? "";
   }
 
   joinSession(): void {
     this.service.createPlayer(this.sessionId, { username: this.username }).subscribe((player: IPlayer) => {
       this.service.player = player;
-      localStorage.setItem("playerid", player.id);
+      localStorage.setItem("playerId", player.id);
       void this.router.navigate(["/game", this.sessionId]);
     });
     // TODO: ERR MAX PLAYERS
