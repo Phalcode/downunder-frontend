@@ -11,7 +11,7 @@ import { ISession } from "src/models/ISession";
   styleUrls: ["./game.component.scss"]
 })
 export class GameComponent implements OnInit {
-  readonly refreshInterval: number = 30000;
+  readonly refreshInterval: number = 2000;
   sessionId: string;
   playerId: string;
   constructor(public service: LowbobService, private route: ActivatedRoute) {}
@@ -20,12 +20,31 @@ export class GameComponent implements OnInit {
     this.sessionId = this.route.snapshot.paramMap.get("id") ?? this.service.session?.id;
     this.playerId = localStorage.getItem("playerid") ?? this.service.player?.id;
     timer(0, this.refreshInterval).subscribe(() => {
-      this.service.getSession(this.sessionId).subscribe((session: ISession) => {
+      this.service.getSession(this.sessionId, this.playerId).subscribe((session: ISession) => {
         this.service.session = session;
+        this.service.player = session.players.find((player: IPlayer) => player.id === this.playerId);
       });
-      this.service.getPlayer(this.sessionId, this.playerId).subscribe((player: IPlayer) => {
-        this.service.player = player;
-      });
+    });
+  }
+
+  playCard(cardId: string): void {
+    this.service.playCard(this.sessionId, this.playerId, cardId).subscribe((session: ISession) => {
+      this.service.session = session;
+      this.service.player = session.players.find((player: IPlayer) => player.id === this.playerId);
+    });
+  }
+
+  drawCard(): void {
+    this.service.drawCard(this.sessionId, this.playerId).subscribe((session: ISession) => {
+      this.service.session = session;
+      this.service.player = session.players.find((player: IPlayer) => player.id === this.playerId);
+    });
+  }
+
+  endTurn(): void {
+    this.service.endTurn(this.sessionId, this.playerId).subscribe((session: ISession) => {
+      this.service.session = session;
+      this.service.player = session.players.find((player: IPlayer) => player.id === this.playerId);
     });
   }
 }

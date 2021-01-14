@@ -5,4 +5,5 @@ export interface IPlayer {
   username?: string;
   chips?: number;
   cards?: ICard[];
+  turn?: boolean;
 }

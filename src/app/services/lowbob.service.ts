@@ -18,8 +18,8 @@ export class LowbobService {
     return this.http.post<ISession>(`${environment.baseUrl}/session`, sessionInformation);
   }
 
-  getSession(sessionId: string): Observable<ISession> {
-    return this.http.get<ISession>(`${environment.baseUrl}/session/${sessionId}`);
+  getSession(sessionId: string, playerId: string): Observable<ISession> {
+    return this.http.get<IPlayer>(`${environment.baseUrl}/session/${sessionId}/player/${playerId}`);
   }
 
   deleteSession(sessionId: string): Observable<unknown> {
@@ -28,10 +28,6 @@ export class LowbobService {
 
   createPlayer(sessionId: string, playerInformation: IPlayer): Observable<IPlayer> {
     return this.http.post<IPlayer>(`${environment.baseUrl}/session/${sessionId}/player`, playerInformation);
-  }
-
-  getPlayer(sessionId: string, playerId: string): Observable<IPlayer> {
-    return this.http.get<IPlayer>(`${environment.baseUrl}/session/${sessionId}/player/${playerId}`);
   }
 
   deletePlayer(sessionId: string, playerId: string): Observable<unknown> {

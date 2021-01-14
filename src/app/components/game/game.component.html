@@ -1,17 +1,15 @@
 <div class="w-screen h-screen p-10 flex flex-col items-center justify-center">
-  <!-- JSON   -->
-  <div class="shadow-xl bg-gray-100 bg-opacity-90 p-5 rounded-xl max-w-6xl overscroll-auto">
-    <h1 class="font-bold text-3xl mb-4">Session</h1>
-    <ngx-json-viewer [json]="this.service.session" [expanded]="false"></ngx-json-viewer>
-  </div>
   <!-- Grow  -->
   <span class="flex-grow"></span>
   <!-- Cards -->
   <div class="w-full flex space-x-6 items-center justify-center mt-14">
     <div *ngFor="let card of service.player?.cards; let i = index" class="h-80 w-60 relative cursor-pointer">
-      <div class="absolute inset-0 transform hover:scale-110 hover:-translate-y-5 transition duration-200">
-        <img draggable="false" [src]="card.source" class="h-full w-full shadow-2xl" />
-      </div>
+      <img
+        draggable="false"
+        [src]="card.source"
+        class="h-full w-full absolute inset-0 transform hover:scale-110 hover:-translate-y-5 transition duration-200"
+        (click)="playCard(card.id)"
+      />
     </div>
   </div>
 </div>
