@@ -1,5 +1,5 @@
 {
-  "name": "lowbob77-client",
+  "name": "DownUnder-client",
   "version": "0.0.0",
   "authors": [
     "Alfagun74"
@@ -8,7 +8,7 @@
     "ng": "ng",
     "start": "ng serve",
     "public": "ng serve --host=0.0.0.0 --disable-host-check --ssl",
-    "prod": "ng build --prod && http-server -S -C ./ssl/crt.pem -K ./ssl/key.pem -p 4200 -c-1 dist/Lowbob77-Client",
+    "prod": "ng build --prod && http-server -S -C ./ssl/crt.pem -K ./ssl/key.pem -p 4200 -c-1 dist/DownUnder-Client",
     "build": "ng build",
     "test": "jest",
     "lint": "ng lint --fix",

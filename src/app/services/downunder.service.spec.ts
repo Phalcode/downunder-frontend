@@ -1,9 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { TestBed } from "@angular/core/testing";
-import { LowbobService } from "./lowbob.service";
+import { DownUnderService } from "./DownUnder.service";
 
-describe("LowbobService", () => {
-  let service: LowbobService;
+describe("DownUnderService", () => {
+  let service: DownUnderService;
   const httpMock = {
     get: jest.fn(),
     post: jest.fn(),
@@ -14,7 +14,7 @@ describe("LowbobService", () => {
     TestBed.configureTestingModule({
       providers: [{ provide: HttpClient, useValue: httpMock }]
     });
-    service = TestBed.inject(LowbobService);
+    service = TestBed.inject(DownUnderService);
     jest.clearAllMocks();
   });
 

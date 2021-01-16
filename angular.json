@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Lowbob77-Client": {
+    "DownUnder-Client": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
-            "outputPath": "dist/Lowbob77-Client",
+            "outputPath": "dist/DownUnder-Client",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -65,20 +65,20 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "browserTarget": "Lowbob77-Client:build",
+            "browserTarget": "DownUnder-Client:build",
             "sslKey": "ssl/key.pem",
             "sslCert": "ssl/crt.pem"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Lowbob77-Client:build:production"
+              "browserTarget": "DownUnder-Client:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Lowbob77-Client:build"
+            "browserTarget": "DownUnder-Client:build"
           }
         },
         "lint": {
@@ -90,5 +90,5 @@
       }
     }
   },
-  "defaultProject": "Lowbob77-Client"
+  "defaultProject": "DownUnder-Client"
 }

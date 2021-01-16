@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { timer } from "rxjs";
-import { LowbobService } from "src/app/services/lowbob.service";
+import { DownUnderService } from "src/app/services/DownUnder.service";
 import { ISession } from "src/models/ISession";
 
 @Component({
@@ -14,7 +14,7 @@ export class CreateComponent {
   maxPlayers = 8;
   playerChips = 3;
 
-  constructor(private service: LowbobService, private router: Router) {
+  constructor(private service: DownUnderService, private router: Router) {
     timer(0, 1000).subscribe(() => {
       console.log(this.playerChips.toString() + " " + typeof this.playerChips);
     });

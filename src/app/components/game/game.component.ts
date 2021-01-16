@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { timer } from "rxjs";
-import { LowbobService } from "src/app/services/lowbob.service";
+import { DownUnderService } from "src/app/services/DownUnder.service";
 import { IPlayer } from "src/models/IPlayer";
 import { ISession } from "src/models/ISession";
 
@@ -15,7 +15,7 @@ export class GameComponent implements OnInit, OnDestroy {
   sessionId: string;
   playerId: string;
 
-  constructor(public service: LowbobService, private router: Router, private route: ActivatedRoute) {}
+  constructor(public service: DownUnderService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.sessionId = this.route.snapshot.paramMap.get("sessionId") ?? this.service.session?.id;

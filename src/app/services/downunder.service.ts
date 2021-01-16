@@ -8,7 +8,7 @@ import { ISession } from "src/models/ISession";
 @Injectable({
   providedIn: "root"
 })
-export class LowbobService {
+export class DownUnderService {
   public session: ISession;
   public player: IPlayer;
 

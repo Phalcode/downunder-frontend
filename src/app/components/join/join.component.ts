@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { LowbobService } from "src/app/services/lowbob.service";
+import { DownUnderService } from "src/app/services/DownUnder.service";
 import { IPlayer } from "src/models/IPlayer";
 @Component({
   selector: "app-join",
@@ -10,7 +10,7 @@ import { IPlayer } from "src/models/IPlayer";
 export class JoinComponent {
   sessionId = "";
   username = "";
-  constructor(private service: LowbobService, private router: Router, private route: ActivatedRoute) {
+  constructor(private service: DownUnderService, private router: Router, private route: ActivatedRoute) {
     this.sessionId = this.route.snapshot.paramMap.get("sessionId") ?? this.service.session?.id ?? "";
   }
 
