@@ -2,6 +2,9 @@
 # ssl
 /ssl
 
+# IDE
+/.vscode
+
 # compiled output
 /dist
 /tmp
