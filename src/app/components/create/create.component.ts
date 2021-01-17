@@ -1,6 +1,5 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
-import { timer } from "rxjs";
 import { DownUnderService } from "src/app/services/DownUnder.service";
 import { ISession } from "src/models/ISession";
 
@@ -14,11 +13,7 @@ export class CreateComponent {
   maxPlayers = 8;
   playerChips = 3;
 
-  constructor(private service: DownUnderService, private router: Router) {
-    timer(0, 1000).subscribe(() => {
-      console.log(this.playerChips.toString() + " " + typeof this.playerChips);
-    });
-  }
+  constructor(private service: DownUnderService, private router: Router) {}
 
   changePlayerChips(value: number = 3): void {
     if (this.playerChips + value > 0 && this.playerChips + value < 100) {

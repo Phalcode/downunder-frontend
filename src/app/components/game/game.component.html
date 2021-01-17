@@ -2,13 +2,15 @@
   <!--Players-->
   <div class="w-full grid grid-rows-1 gap-6">
     <div class="bg-white shadow-xl rounded-lg py-1 whitespace-nowrap p-3 w-full"
-      *ngFor="let player of service.session?.players; let i = index">
+      *ngFor="let player of service.session?.players; let i = index"
+      [class.bg-green-400]="player?.turn">
         <h3 class="text-center text-xl text-gray-900 font-medium leading-8 overflow-hidden">{{player.username}}</h3>
         <h2 class="text-center text-l text-gray-900 overflow-hidden">{{player.chips}} Chips</h2>
     </div>
   </div>
   <!-- Grow  -->
   <span class="flex-grow"></span>
+  <h1 class="text-9xl font-black text-white">{{service.session?.count}}</h1>
   <span class="flex-grow"></span>
   <!-- Cards -->
   <div class="w-full flex space-x-6 items-center justify-center">
