@@ -1,10 +1,10 @@
 .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-    justify-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  justify-items: center;
 }
 
 .text-9xl {
-    font-size: 20rem;
-    line-height: 1;
+  font-size: 20vh;
+  line-height: 1;
 }

@@ -4,6 +4,7 @@ import { timer } from "rxjs";
 import { DownUnderService } from "src/app/services/DownUnder.service";
 import { IPlayer } from "src/models/IPlayer";
 import { ISession } from "src/models/ISession";
+import { PlayerStateEnum } from "src/models/PlayerStateEnum";
 
 @Component({
   selector: "app-game",
@@ -12,6 +13,7 @@ import { ISession } from "src/models/ISession";
 })
 export class GameComponent implements OnInit, OnDestroy {
   readonly refreshInterval: number = 2000;
+  PlayerStateEnum: typeof PlayerStateEnum = PlayerStateEnum;
   sessionId: string;
   playerId: string;
 
@@ -40,13 +42,6 @@ export class GameComponent implements OnInit, OnDestroy {
 
   playCard(cardId: string): void {
     this.service.playCard(this.sessionId, this.playerId, cardId).subscribe((session: ISession) => {
-      this.service.session = session;
-      this.service.player = session.players.find((player: IPlayer) => player.id === this.playerId);
-    });
-  }
-
-  drawCard(): void {
-    this.service.drawCard(this.sessionId, this.playerId).subscribe((session: ISession) => {
       this.service.session = session;
       this.service.player = session.players.find((player: IPlayer) => player.id === this.playerId);
     });

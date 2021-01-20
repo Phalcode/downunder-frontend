@@ -19,7 +19,7 @@ export class DownUnderService {
   }
 
   getSession(sessionId: string, playerId: string): Observable<ISession> {
-    return this.http.get<IPlayer>(`${environment.baseUrl}/session/${sessionId}/player/${playerId}`);
+    return this.http.get<ISession>(`${environment.baseUrl}/session/${sessionId}/player/${playerId}`);
   }
 
   deleteSession(sessionId: string): Observable<unknown> {
@@ -32,10 +32,6 @@ export class DownUnderService {
 
   deletePlayer(sessionId: string, playerId: string): Observable<unknown> {
     return this.http.delete<unknown>(`${environment.baseUrl}/session/${sessionId}/player/${playerId}`);
-  }
-
-  drawCard(sessionId: string, playerId: string): Observable<IPlayer> {
-    return this.http.get<IPlayer>(`${environment.baseUrl}/session/${sessionId}/player/${playerId}/draw`);
   }
 
   playCard(sessionId: string, playerId: string, cardId: string): Observable<ISession> {

@@ -1,11 +1,17 @@
 <div class="w-screen h-screen p-10 flex flex-col items-center justify-center">
   <!--Players-->
   <div class="w-full grid grid-rows-1 gap-6">
-    <div class="bg-white shadow-xl rounded-lg py-1 whitespace-nowrap p-3 w-full"
+    <div
+      class="bg-white shadow-xl rounded-lg py-1 whitespace-nowrap p-3 w-full"
       *ngFor="let player of service.session?.players; let i = index"
-      [class.bg-green-400]="player?.turn">
-        <h3 class="text-center text-xl text-gray-900 font-medium leading-8 overflow-hidden">{{player.username}}</h3>
-        <h2 class="text-center text-l text-gray-900 overflow-hidden">{{player.chips}} Chips</h2>
+      [class.bg-green-400]="player?.turn"
+    >
+      <img class="rounded-full w-24 float-left align-middle" src="{{player?.imageUrl}}" /><br />
+      <h3 class="align-middle text-right md:text-center text-xl text-gray-900 font-medium leading-8 overflow-hidden">
+        {{player?.username}}
+      </h3>
+      <h2 class="align-middle text-right md:text-center text-l text-gray-900 overflow-hidden">{{player?.chips}} Chips</h2>
+      <h2 class="align-middle text-right md:text-center text-l text-gray-900 overflow-hidden">{{PlayerStateEnum[player?.state]}}</h2>
     </div>
   </div>
   <!-- Grow  -->
@@ -15,9 +21,19 @@
   <!-- Cards -->
   <div class="w-full flex space-x-6 items-center justify-center">
     <div *ngFor="let card of service.player?.cards; let i = index" class="h-80 w-60 relative cursor-pointer">
-      <img draggable="false" [src]="card.source"
+      <img
+        draggable="false"
+        [src]="card.source"
         class="h-full w-full absolute inset-0 transform hover:scale-110 hover:-translate-y-5 transition duration-200"
-        (click)="playCard(card.id)" />
+        (click)="playCard(card.id)"
+      />
     </div>
   </div>
+  <!--Buttons-->
+  <button
+    (click)="endTurn()"
+    class="outline-none focus:outline-none disabled:opacity-50 bg-green-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-green-600 w-32 ml-1 disabled:opacity-50"
+  >
+    End Turn
+  </button>
 </div>

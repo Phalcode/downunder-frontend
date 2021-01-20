@@ -1,4 +1,5 @@
 import { ICard } from "./ICard";
+import { PlayerStateEnum } from "./PlayerStateEnum";
 
 export interface IPlayer {
   id?: string;
@@ -6,4 +7,6 @@ export interface IPlayer {
   chips?: number;
   cards?: ICard[];
   turn?: boolean;
+  imageUrl?: string;
+  state?: PlayerStateEnum;
 }

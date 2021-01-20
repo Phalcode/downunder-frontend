@@ -24,16 +24,15 @@ describe("DownUnderService", () => {
 
   test("should create a session", () => {
     service.createSession({
-      name: "Session",
-      chips: 3,
-      hidden: false,
-      maxPlayers: 8
+      SETTING_NAME: "Session",
+      SETTING_CHIPS: 3,
+      SETTING_MAX_PLAYERS: 8
     });
     expect(httpMock.post).toHaveBeenCalledTimes(1);
   });
 
   test("should get a session", () => {
-    service.getSession("ASDFG");
+    service.getSession("ASDFG", "ASDFG");
     expect(httpMock.get).toHaveBeenCalledTimes(1);
   });
 
@@ -43,23 +42,13 @@ describe("DownUnderService", () => {
   });
 
   test("should create a player", () => {
-    service.createPlayer({ username: "Alfagun74" });
+    service.createPlayer("ASDFG", { username: "Alfagun74" });
     expect(httpMock.post).toHaveBeenCalledTimes(1);
-  });
-
-  test("should get a player", () => {
-    service.getPlayer("ASSFF", "ASDFG");
-    expect(httpMock.get).toHaveBeenCalledTimes(1);
   });
 
   test("should delete a player", () => {
     service.deletePlayer("ASDFG", "ASDFG");
     expect(httpMock.delete).toHaveBeenCalledTimes(1);
-  });
-
-  test("should draw a card", () => {
-    service.drawCard("ASDFG", "ASDFG");
-    expect(httpMock.get).toHaveBeenCalledTimes(1);
   });
 
   test("should play a card", () => {

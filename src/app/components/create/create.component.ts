@@ -24,9 +24,9 @@ export class CreateComponent {
   createSession(): void {
     this.service
       .createSession({
-        name: this.sessionName,
-        maxPlayers: this.maxPlayers,
-        chips: this.playerChips
+        SETTING_NAME: this.sessionName,
+        SETTING_MAX_PLAYERS: this.maxPlayers,
+        SETTING_CHIPS: this.playerChips
       })
       .subscribe((session: ISession) => {
         this.service.session = session;

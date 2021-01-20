@@ -1,10 +1,13 @@
 import { IPlayer } from "./IPlayer";
+import { SessionStateEnum } from "./SessionStateEnum";
 
 export interface ISession {
   id?: string;
-  name?: string;
-  chips?: number;
-  maxPlayers?: number;
+  SETTING_NAME?: string;
+  SETTING_CHIPS?: number;
+  SETTING_MAX_PLAYERS?: number;
+  SETTING_MAX_COUNT?: number;
   count?: number;
   players?: IPlayer[];
+  state?: SessionStateEnum;
 }
