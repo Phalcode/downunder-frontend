@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { timer } from "rxjs";
+import { Observable, Subscription, timer } from "rxjs";
 import { DownUnderService } from "src/app/services/DownUnder.service";
+import { ICard } from "src/models/ICard";
 import { IPlayer } from "src/models/IPlayer";
 import { ISession } from "src/models/ISession";
 import { PlayerStateEnum } from "src/models/PlayerStateEnum";
@@ -12,7 +13,8 @@ import { PlayerStateEnum } from "src/models/PlayerStateEnum";
   styleUrls: ["./game.component.scss"]
 })
 export class GameComponent implements OnInit, OnDestroy {
-  readonly refreshInterval: number = 2000;
+  readonly refreshInterval: number = 3000;
+  timer: Subscription;
   PlayerStateEnum: typeof PlayerStateEnum = PlayerStateEnum;
   sessionId: string;
   playerId: string;
@@ -28,7 +30,7 @@ export class GameComponent implements OnInit, OnDestroy {
       return;
     }
 
-    timer(0, this.refreshInterval).subscribe(() => {
+    this.timer = timer(0, this.refreshInterval).subscribe(() => {
       this.service.getSession(this.sessionId, this.playerId).subscribe((session: ISession) => {
         this.service.session = session;
         this.service.player = session.players.find((player: IPlayer) => player.id === this.playerId);
@@ -38,6 +40,7 @@ export class GameComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     localStorage.removeItem("playerId");
+    this.timer.unsubscribe();
   }
 
   playCard(cardId: string): void {

@@ -24,16 +24,10 @@
       <img
         draggable="false"
         [src]="card.source"
-        class="h-full w-full absolute inset-0 transform hover:scale-110 hover:-translate-y-5 transition duration-200"
+        class="absolute transform hover:scale-110 hover:-translate-y-5 transition duration-200"
         (click)="playCard(card.id)"
       />
     </div>
   </div>
-  <!--Buttons-->
-  <button
-    (click)="endTurn()"
-    class="outline-none focus:outline-none disabled:opacity-50 bg-green-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-green-600 w-32 ml-1 disabled:opacity-50"
-  >
-    End Turn
-  </button>
+  
 </div>
