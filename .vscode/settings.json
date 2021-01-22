@@ -1,3 +1,19 @@
 {
-  "prettier.configPath": "A:\\DEVELOPMENT\\Lowbob77-Client\\.prettierrc"
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#5f8ecb",
+        "activityBar.activeBorder": "#902f59",
+        "activityBar.background": "#5f8ecb",
+        "activityBar.foreground": "#15202b",
+        "activityBar.inactiveForeground": "#15202b99",
+        "activityBarBadge.background": "#902f59",
+        "activityBarBadge.foreground": "#e7e7e7",
+        "statusBar.background": "#3c73bb",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#5f8ecb",
+        "titleBar.activeBackground": "#3c73bb",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveBackground": "#3c73bb99",
+        "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "peacock.color": "#3c73bb"
 }

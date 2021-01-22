@@ -3,7 +3,7 @@
 /ssl
 
 # IDE
-/.vscode
+.vscode
 
 # compiled output
 /dist
