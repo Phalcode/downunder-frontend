@@ -12,10 +12,20 @@ import { CreateComponent } from "./components/create/create.component";
 import { JoinComponent } from "./components/join/join.component";
 import { GameComponent } from "./components/game/game.component";
 import { NotfoundComponent } from "./components/notfound/notfound.component";
-import { NullToDefaultDirective } from "./directives/nullToDefault";
+import { NullToDefaultDirective } from "./directives/nullToDefault.directive";
+import { AutofocusDirective } from "./directives/autofocus.directive";
 
 @NgModule({
-  declarations: [AppComponent, StartComponent, CreateComponent, JoinComponent, GameComponent, NotfoundComponent, NullToDefaultDirective],
+  declarations: [
+    AppComponent,
+    StartComponent,
+    CreateComponent,
+    JoinComponent,
+    GameComponent,
+    NotfoundComponent,
+    NullToDefaultDirective,
+    AutofocusDirective
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

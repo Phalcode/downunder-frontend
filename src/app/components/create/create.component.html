@@ -1,4 +1,4 @@
-<div class="shadow-xl bg-gray-100 bg-opacity-90 p-5 max-w-xl rounded-xl">
+<form (submit)="createSession()" class="shadow-xl bg-gray-100 bg-opacity-90 p-5 max-w-xl rounded-xl">
   <h1 class="font-bold text-3xl mb-4">Create Session</h1>
   <h2 class="text-xl font-semibold mb-4">
     Hi there 👋<span class="font-normal"
@@ -10,13 +10,14 @@
   <label for="sessionNameInput" class="font-bold">Session Name</label>
   <div class="mb-4">
     <input
-      autofocus
+      appAutofocus
       class="h-10 w-full rounded bg-drabya-gray border-gray-500 focus focus:border-blue-600 focus:outline-none active:outline-none active:border-blue-600 appearance-none border p-4 font-light leading-tight focus:shadow-outline"
       type="text"
       placeholder="Fresh Session 🍋"
       maxlength="32"
       id="sessionNameInput"
       [(ngModel)]="sessionName"
+      name="sessionName"
       minlength="3"
       maxlength="32"
       required
@@ -32,6 +33,7 @@
     max="8"
     id="maxplayerslider"
     [(ngModel)]="maxPlayers"
+    name="maxPlayers"
     required
   />
   <div class="flex justify-between mt-2 mb-4 text-xs text-gray-600 font-bold">
@@ -58,6 +60,7 @@
         type="number"
         pattern="/^[0-9]{2}$/"
         [(ngModel)]="playerChips"
+        name="playerChips"
         class="outline-none focus:outline-none text-center w-full bg-white font-semibold text-md hover:text-black focus:text-black md:text-basecursor-default flex items-center text-gray-700"
         name="custom-number-input"
         onInput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
@@ -80,6 +83,7 @@
     <!--Control Buttons-->
     <div class="mt-8 flex">
       <button
+        type="reset"
         [routerLink]="['/']"
         class="outline-none focus:outline-none bg-gray-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-red-600 w-32 mr-1"
       >
@@ -87,12 +91,12 @@
       </button>
       <span class="flex-grow"></span>
       <button
+        type="submit"
         [disabled]="!sessionName"
-        (click)="createSession()"
         class="outline-none focus:outline-none disabled:opacity-50 bg-green-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-green-600 w-32 ml-1 disabled:opacity-50"
       >
         Continue
       </button>
     </div>
   </div>
-</div>
+</form>

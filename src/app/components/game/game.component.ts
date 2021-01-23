@@ -13,7 +13,7 @@ import { PlayerStateEnum } from "src/models/PlayerStateEnum";
   styleUrls: ["./game.component.scss"]
 })
 export class GameComponent implements OnInit, OnDestroy {
-  readonly refreshInterval: number = 3000;
+  readonly refreshInterval: number = 2000;
   timer: Subscription;
   PlayerStateEnum: typeof PlayerStateEnum = PlayerStateEnum;
   sessionId: string;
