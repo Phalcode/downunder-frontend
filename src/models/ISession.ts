@@ -1,3 +1,4 @@
+import { ICardSet } from "./ICardSet";
 import { IPlayer } from "./IPlayer";
 import { SessionStateEnum } from "./SessionStateEnum";
 
@@ -10,4 +11,5 @@ export interface ISession {
   count?: number;
   players?: IPlayer[];
   state?: SessionStateEnum;
+  cardset?: ICardSet;
 }

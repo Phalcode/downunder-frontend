@@ -18,24 +18,18 @@ export class GameComponent implements OnInit, OnDestroy {
   PlayerStateEnum: typeof PlayerStateEnum = PlayerStateEnum;
   sessionId: string;
   playerId: string;
+  lastCard: ICard;
 
   constructor(public service: DownUnderService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.sessionId = this.route.snapshot.paramMap.get("sessionId") ?? this.service.session?.id;
     this.playerId = localStorage.getItem("playerId") ?? this.service.player?.id;
-
     if (!this.playerId) {
       void this.router.navigate(["/join", this.sessionId]);
       return;
     }
-
-    this.timer = timer(0, this.refreshInterval).subscribe(() => {
-      this.service.getSession(this.sessionId, this.playerId).subscribe((session: ISession) => {
-        this.service.session = session;
-        this.service.player = session.players.find((player: IPlayer) => player.id === this.playerId);
-      });
-    });
+    this.setupRefreshTimer();
   }
 
   ngOnDestroy(): void {
@@ -44,16 +38,22 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   playCard(cardId: string): void {
-    this.service.playCard(this.sessionId, this.playerId, cardId).subscribe((session: ISession) => {
-      this.service.session = session;
-      this.service.player = session.players.find((player: IPlayer) => player.id === this.playerId);
-    });
+    this.service.playCard(this.sessionId, this.playerId, cardId).subscribe((session: ISession) => this.refreshInfo(session));
   }
 
   endTurn(): void {
-    this.service.endTurn(this.sessionId, this.playerId).subscribe((session: ISession) => {
-      this.service.session = session;
-      this.service.player = session.players.find((player: IPlayer) => player.id === this.playerId);
+    this.service.endTurn(this.sessionId, this.playerId).subscribe((session: ISession) => this.refreshInfo(session));
+  }
+
+  private setupRefreshTimer(): void {
+    this.timer = timer(0, this.refreshInterval).subscribe(() => {
+      this.service.getSession(this.sessionId, this.playerId).subscribe((session: ISession) => this.refreshInfo(session));
     });
+  }
+
+  private refreshInfo(session: ISession): void {
+    this.service.session = session;
+    this.service.player = session.players.find((player: IPlayer) => player.id === this.playerId);
+    this.lastCard = session.cardset.playedCards.slice(-1)[0];
   }
 }
