@@ -10,7 +10,7 @@
     "public": "ng serve --host=0.0.0.0 --disable-host-check --ssl",
     "prod": "ng build --prod --output-path=dist",
     "build": "ng build",
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
     "lint": "ng lint --fix",
     "e2e": "ng e2e"
   },
