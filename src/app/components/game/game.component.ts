@@ -26,7 +26,7 @@ export class GameComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.sessionId = this.route.snapshot.paramMap.get("sessionId") ?? this.service.session?.id;
     this.playerId = localStorage.getItem("playerId") ?? this.service.player?.id;
-    if (!this.playerId) {
+    if (!this.playerId && this.sessionId) {
       void this.router.navigate(["/join", this.sessionId]);
       return;
     }
