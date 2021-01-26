@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { TestBed } from "@angular/core/testing";
-import { DownUnderService } from "./DownUnder.service";
+import { DownUnderService } from "./downunder.service";
 
 describe("DownUnderService", () => {
   let service: DownUnderService;

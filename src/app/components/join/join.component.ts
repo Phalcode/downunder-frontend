@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { DownUnderService } from "../../../app/services/DownUnder.service";
+import { DownUnderService } from "../../../app/services/downunder.service";
 import { IPlayer } from "../../../models/IPlayer";
 @Component({
   selector: "app-join",

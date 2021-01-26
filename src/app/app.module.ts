@@ -14,7 +14,7 @@ import { GameComponent } from "./components/game/game.component";
 import { NotfoundComponent } from "./components/notfound/notfound.component";
 import { NullToDefaultDirective } from "./directives/nullToDefault.directive";
 import { AutofocusDirective } from "./directives/autofocus.directive";
-import { DownUnderService } from "./services/DownUnder.service";
+import { DownUnderService } from "./services/downunder.service";
 
 @NgModule({
   declarations: [

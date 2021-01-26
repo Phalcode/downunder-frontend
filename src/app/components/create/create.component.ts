@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
-import { DownUnderService } from "../../services/DownUnder.service";
+import { DownUnderService } from "../../services/downunder.service";
 import { ISession } from "../../../models/ISession";
 
 @Component({
