@@ -14,6 +14,7 @@ import { GameComponent } from "./components/game/game.component";
 import { NotfoundComponent } from "./components/notfound/notfound.component";
 import { NullToDefaultDirective } from "./directives/nullToDefault.directive";
 import { AutofocusDirective } from "./directives/autofocus.directive";
+import { DownUnderService } from "./services/DownUnder.service";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { AutofocusDirective } from "./directives/autofocus.directive";
       registrationStrategy: "registerImmediately"
     })
   ],
-  providers: [],
+  providers: [DownUnderService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

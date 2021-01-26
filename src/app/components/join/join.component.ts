@@ -1,11 +1,12 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { DownUnderService } from "src/app/services/DownUnder.service";
-import { IPlayer } from "src/models/IPlayer";
+import { DownUnderService } from "../../../app/services/DownUnder.service";
+import { IPlayer } from "../../../models/IPlayer";
 @Component({
   selector: "app-join",
   templateUrl: "./join.component.html",
-  styleUrls: ["./join.component.scss"]
+  styleUrls: ["./join.component.scss"],
+  providers: [DownUnderService]
 })
 export class JoinComponent {
   sessionId = "";

@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: "http://alfagun74.de:7777"
+  backendUrl: "http://alfagun74.de:7777"
 };

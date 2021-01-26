@@ -1,12 +1,13 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
-import { DownUnderService } from "src/app/services/DownUnder.service";
-import { ISession } from "src/models/ISession";
+import { DownUnderService } from "../../services/DownUnder.service";
+import { ISession } from "../../../models/ISession";
 
 @Component({
   selector: "app-create",
   templateUrl: "./create.component.html",
-  styleUrls: ["./create.component.scss"]
+  styleUrls: ["./create.component.scss"],
+  providers: [DownUnderService]
 })
 export class CreateComponent {
   sessionName = "";

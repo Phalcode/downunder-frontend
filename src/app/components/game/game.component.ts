@@ -1,16 +1,17 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Observable, Subscription, timer } from "rxjs";
-import { DownUnderService } from "src/app/services/DownUnder.service";
-import { ICard } from "src/models/ICard";
-import { IPlayer } from "src/models/IPlayer";
-import { ISession } from "src/models/ISession";
-import { PlayerStateEnum } from "src/models/PlayerStateEnum";
+import { Subscription, timer } from "rxjs";
+import { DownUnderService } from "../../../app/services/DownUnder.service";
+import { ICard } from "../../../models/ICard";
+import { IPlayer } from "../../../models/IPlayer";
+import { ISession } from "../../../models/ISession";
+import { PlayerStateEnum } from "../../../models/PlayerStateEnum";
 
 @Component({
   selector: "app-game",
   templateUrl: "./game.component.html",
-  styleUrls: ["./game.component.scss"]
+  styleUrls: ["./game.component.scss"],
+  providers: [DownUnderService]
 })
 export class GameComponent implements OnInit, OnDestroy {
   readonly refreshInterval: number = 2000;
