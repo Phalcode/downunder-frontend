@@ -38,7 +38,7 @@ export class CreateComponent {
           console.error(error);
         },
         () => {
-          void this.router.navigate(["/join"]);
+          void this.router.navigate(["/join", this.service.session.id]);
         }
       );
   }
