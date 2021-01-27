@@ -7,9 +7,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "public": "ng serve --host=0.0.0.0 --disable-host-check --ssl",
     "prod": "ng build --prod --aot",
-    "prebuild": "npm --no-git-tag-version version patch",
+    "deploy": "npm --no-git-tag-version version patch",
     "build": "ng build",
     "test": "jest --detectOpenHandles",
     "lint": "ng lint --fix"
