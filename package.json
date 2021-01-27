@@ -12,7 +12,7 @@
     "build": "ng build",
     "test": "jest --detectOpenHandles",
     "lint": "ng lint --fix"
-    },
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^11.1.0",

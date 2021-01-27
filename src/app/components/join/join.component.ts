@@ -18,7 +18,7 @@ export class JoinComponent {
   joinSession(): void {
     this.service.createPlayer(this.sessionId, { username: this.username }).subscribe((player: IPlayer) => {
       this.service.player = player;
-      localStorage.setItem("playerId", player.id);
+      sessionStorage.setItem("playerId", player.id);
       void this.router.navigate(["/game", this.sessionId]);
     });
     // TODO: ERR MAX PLAYERS

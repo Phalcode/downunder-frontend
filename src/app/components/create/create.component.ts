@@ -31,6 +31,7 @@ export class CreateComponent {
       })
       .subscribe((session: ISession) => {
         this.service.session = session;
+        console.log(session);
         void this.router.navigate(["/join"]);
         // TODO: Error Handling, Session not Found
       });
