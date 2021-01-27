@@ -6,6 +6,7 @@ import { ICard } from "../../../models/ICard";
 import { IPlayer } from "../../../models/IPlayer";
 import { ISession } from "../../../models/ISession";
 import { PlayerStateEnum } from "../../../models/PlayerStateEnum";
+import confetti from "canvas-confetti";
 
 @Component({
   selector: "app-game",
@@ -56,5 +57,37 @@ export class GameComponent implements OnInit, OnDestroy {
     this.service.session = session;
     this.service.player = session.players.find((player: IPlayer) => player.id === this.playerId);
     this.lastCard = session.cardset.playedCards.slice(-1)[0];
+    if (this.service.player.state === PlayerStateEnum.Winner) {
+      this.shoot();
+    }
+  }
+
+  shoot(): void {
+    const duration = 15 * 1000;
+    const animationEnd = Date.now() + duration;
+    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+    const interval = setInterval(() => {
+      const timeLeft = animationEnd - Date.now();
+      if (timeLeft <= 0) {
+        return clearInterval(interval);
+      }
+      const particleCount = 50 * (timeLeft / duration);
+      void confetti(
+        Object.assign({}, defaults, {
+          particleCount,
+          origin: { x: this.randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+        }) as confetti.Options
+      );
+      void confetti(
+        Object.assign({}, defaults, {
+          particleCount,
+          origin: { x: this.randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+        }) as confetti.Options
+      );
+    }, 250);
+  }
+
+  private randomInRange(min: number, max: number): number {
+    return Math.random() * (max - min) + min;
   }
 }
