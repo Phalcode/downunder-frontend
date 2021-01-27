@@ -1,7 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { ActivatedRoute, Router, RouterModule } from "@angular/router";
-import { RouterTestingModule } from "@angular/router/testing";
+import { ActivatedRoute, Router } from "@angular/router";
 import { GameComponent } from "./game.component";
 
 describe("GameComponent", () => {
