@@ -1,10 +1,14 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
   production: false,
-  backendUrl: "http://localhost:7777"
+  backendUrl: "http://localhost:7777",
+  appVersion: `${require("../../package.json").version}-dev`
 };
 
 /*
