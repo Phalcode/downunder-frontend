@@ -24,12 +24,7 @@
   <!-- Cards -->
   <div class="w-3/4 flex space-x-6 items-center justify-center">
     <span *ngFor="let card of service.player?.cards; let i = index" class="h-80 w-60 cursor-pointer">
-      <img
-        draggable="false"
-        [src]="card.source"
-        class="transform hover:scale-110 hover:-translate-y-5 transition duration-200"
-        (click)="playCard(card.id)"
-      />
+      <img draggable="false" [src]="card.source" class="transform hover:scale-110 hover:-translate-y-5" (click)="playCard(card.id)" />
     </span>
   </div>
 </div>
