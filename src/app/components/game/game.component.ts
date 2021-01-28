@@ -15,6 +15,7 @@ import confetti from "canvas-confetti";
   providers: [DownUnderService]
 })
 export class GameComponent implements OnInit, OnDestroy {
+  private blockConfetti = false;
   readonly refreshInterval: number = 2000;
   timer: Subscription;
   PlayerStateEnum: typeof PlayerStateEnum = PlayerStateEnum;
@@ -57,8 +58,11 @@ export class GameComponent implements OnInit, OnDestroy {
     this.service.session = session;
     this.service.player = session.players.find((player: IPlayer) => player.id === this.playerId);
     this.lastCard = session.cardset.playedCards.slice(-1)[0];
-    if (this.service.player.state === PlayerStateEnum.Winner) {
+    if (this.service.player.state === PlayerStateEnum.Winner && !this.blockConfetti) {
       this.shoot();
+      this.blockConfetti = true;
+    } else {
+      this.blockConfetti = false;
     }
   }
 

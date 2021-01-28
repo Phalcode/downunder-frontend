@@ -12,7 +12,7 @@ import { environment } from "../environments/environment";
 export class AppComponent {
   currentApplicationVersion = environment.appVersion;
   constructor(private swUpdate: SwUpdate, public router: Router) {
-    interval(1000 * 60 * 60 * 2).subscribe(() =>
+    interval(1000 * 60 * 2).subscribe(() =>
       this.swUpdate.available.subscribe(() => {
         window.location.reload();
       })
