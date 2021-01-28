@@ -1,6 +1,6 @@
 {
   "name": "downunder-client",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "authors": [
     "Alfagun74"
   ],
@@ -15,8 +15,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint && npm run test",
-      "pre-push": "npm run deploy"
+      "pre-commit": "npm run lint && npm run test && npm run deploy && git add ."
     }
   },
   "private": true,
