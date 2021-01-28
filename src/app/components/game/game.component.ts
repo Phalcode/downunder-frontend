@@ -26,9 +26,11 @@ export class GameComponent implements OnInit, OnDestroy {
   constructor(public service: DownUnderService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.sessionId = this.route.snapshot.paramMap.get("sessionId") ?? this.service.session?.id;
+    this.sessionId = this.route.snapshot.paramMap.get("sessionId");
     this.playerId = sessionStorage.getItem("playerId") ?? this.service.player?.id;
-    if (!this.playerId || !this.sessionId) {
+    console.log("Player: " + this.playerId);
+    console.log("Session: " + this.sessionId);
+    if (!this.sessionId || !this.playerId) {
       void this.router.navigate(["/join", this.sessionId]);
       return;
     }
@@ -37,7 +39,9 @@ export class GameComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     sessionStorage.removeItem("playerId");
-    this.timer.unsubscribe();
+    if (this.timer) {
+      this.timer.unsubscribe();
+    }
   }
 
   playCard(cardId: string): void {

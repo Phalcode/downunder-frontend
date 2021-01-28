@@ -12,7 +12,7 @@ export class JoinComponent {
   sessionId = "";
   username = "";
   constructor(private service: DownUnderService, private router: Router, private route: ActivatedRoute) {
-    this.sessionId = this.route.snapshot.paramMap.get("sessionId") ?? this.service.session?.id ?? "";
+    this.sessionId = this.route.snapshot.paramMap.get("sessionId") ?? "";
   }
 
   joinSession(): void {
@@ -21,8 +21,5 @@ export class JoinComponent {
       sessionStorage.setItem("playerId", player.id);
       void this.router.navigate(["/game", this.sessionId]);
     });
-    // TODO: ERR MAX PLAYERS
-    // TODO: ERR SAME NAME
-    // TODO: ERR SESSION NOT FOUND
   }
 }
