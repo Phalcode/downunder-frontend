@@ -59,8 +59,8 @@ export class GameComponent implements OnInit, OnDestroy {
     this.service.player = session.players.find((player: IPlayer) => player.id === this.playerId);
     this.lastCard = session.cardset.playedCards.slice(-1)[0];
     if (this.service.player.state === PlayerStateEnum.Winner && !this.blockConfetti) {
-      this.shoot();
       this.blockConfetti = true;
+      this.shoot();
     } else {
       this.blockConfetti = false;
     }

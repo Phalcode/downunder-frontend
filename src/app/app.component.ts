@@ -1,8 +1,9 @@
 import { Component } from "@angular/core";
-import { Router } from "@angular/router";
+import { NavigationEnd, Router } from "@angular/router";
 import { SwUpdate } from "@angular/service-worker";
-import { interval } from "rxjs";
 import { environment } from "../environments/environment";
+import { filter } from "rxjs/operators";
+import { AckeeService } from "ngx-ackee-wrapper";
 
 @Component({
   selector: "app-root",
@@ -11,11 +12,10 @@ import { environment } from "../environments/environment";
 })
 export class AppComponent {
   currentApplicationVersion = environment.appVersion;
-  constructor(private swUpdate: SwUpdate, public router: Router) {
-    interval(1000 * 60 * 2).subscribe(() =>
-      this.swUpdate.available.subscribe(() => {
-        window.location.reload();
-      })
-    );
+  constructor(private swUpdate: SwUpdate, public router: Router, private ackeeServ: AckeeService) {
+    this.swUpdate.available.subscribe(() => {
+      window.location.reload();
+    });
+    void this.ackeeServ.visit(this.router.events.pipe(filter((evt) => evt instanceof NavigationEnd)));
   }
 }
