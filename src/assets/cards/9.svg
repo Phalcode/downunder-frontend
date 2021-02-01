@@ -7,34 +7,34 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="9.svg"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   id="svg8"
-   version="1.1"
-   viewBox="0 0 63 88"
+   width="63mm"
    height="88mm"
-   width="63mm">
+   viewBox="0 0 63 88"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="9.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
-     inkscape:window-maximized="1"
-     inkscape:window-y="-8"
-     inkscape:window-x="1912"
-     inkscape:window-height="1377"
-     inkscape:window-width="2560"
-     showgrid="false"
-     inkscape:document-rotation="0"
-     inkscape:current-layer="layer3"
-     inkscape:document-units="mm"
-     inkscape:cy="206.54386"
-     inkscape:cx="8.7261081"
-     inkscape:zoom="1.979899"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     borderopacity="1.0"
-     bordercolor="#666666"
+     id="base"
      pagecolor="#ffffff"
-     id="base" />
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="8.7261081"
+     inkscape:cy="206.54386"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer3"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="2560"
+     inkscape:window-height="1377"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -43,86 +43,80 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     sodipodi:insensitive="true"
-     id="layer1"
+     inkscape:label="Background"
      inkscape:groupmode="layer"
-     inkscape:label="Background">
+     id="layer1"
+     sodipodi:insensitive="true">
     <rect
-       ry="5"
-       y="0"
-       x="0"
-       height="88"
-       width="63"
+       style="fill:#1c71d8;stroke-width:0.00054882;paint-order:markers fill stroke"
        id="rect1402"
-       style="fill:#1c71d8;stroke-width:0.00054882;paint-order:markers fill stroke" />
+       width="63"
+       height="88"
+       x="0"
+       y="0"
+       ry="5" />
     <path
-       transform="scale(0.26458333)"
-       d="m 0,132.14844 v 181.55273 c 0,10.46929 8.4291462,18.89649 18.898438,18.89649 H 204.875 c 5.72115,-21.57845 11.04393,-42.97225 7.57422,-60.36524 C 204.3254,226.76135 134.18184,209.08047 80.490234,183.83594 48.369803,169.1634 21.498855,151.89648 0,132.14844 Z"
+       id="path1474"
        style="fill:#62a0ea;stroke-width:1.00875"
-       id="path1474" />
+       d="m 0,132.14844 v 181.55273 c 0,10.46929 8.4291462,18.89649 18.898438,18.89649 H 204.875 c 5.72115,-21.57845 11.04393,-42.97225 7.57422,-60.36524 C 204.3254,226.76135 134.18184,209.08047 80.490234,183.83594 48.369803,169.1634 21.498855,151.89648 0,132.14844 Z"
+       transform="scale(0.26458333)" />
   </g>
   <g
-     sodipodi:insensitive="true"
-     inkscape:label="Edges"
+     inkscape:groupmode="layer"
      id="layer2"
-     inkscape:groupmode="layer">
-    <circle
-       r="6"
-       cy="7.5"
-       cx="7.5"
-       id="path1411"
-       style="fill:#99c1f1;stroke-width:0.00054882;paint-order:markers fill stroke" />
+     inkscape:label="Edges"
+     sodipodi:insensitive="true">
     <circle
        style="fill:#99c1f1;stroke-width:0.00054882;paint-order:markers fill stroke"
-       id="path1411-3"
-       cx="56"
-       cy="81"
+       id="path1411"
+       cx="7.5"
+       cy="7.5"
        r="6" />
+    <circle
+       r="6"
+       cy="81"
+       cx="56"
+       id="path1411-3"
+       style="fill:#99c1f1;stroke-width:0.00054882;paint-order:markers fill stroke" />
   </g>
   <g
-     inkscape:label="Zahlen"
+     inkscape:groupmode="layer"
      id="layer3"
-     inkscape:groupmode="layer">
-    <text
-       transform="scale(0.97823792,1.0222462)"
-       id="text1431"
-       y="55.081085"
-       x="32.518181"
+     inkscape:label="Zahlen">
+    <g
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:33.4406px;line-height:1.35;font-family:Emmett;-inkscape-font-specification:Emmett;text-align:center;text-anchor:middle;stroke-width:0.174169"
-       xml:space="preserve"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Emmett;-inkscape-font-specification:Emmett;stroke-width:0.174169"
-         y="55.081085"
-         x="32.518181"
-         id="tspan1429"
-         sodipodi:role="line">9</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.51502px;line-height:1.35;font-family:Emmett;-inkscape-font-specification:Emmett;text-align:center;text-anchor:middle;stroke-width:0.0443487"
-       x="57.326614"
-       y="82.302681"
-       id="text1431-3"
-       transform="scale(0.97823792,1.0222462)"><tspan
-         sodipodi:role="line"
-         id="tspan1429-2"
-         x="57.326614"
-         y="82.302681"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Emmett;-inkscape-font-specification:Emmett;stroke-width:0.0443487">9</tspan></text>
-    <text
+       id="text1431"
        transform="scale(0.97823792,1.0222462)"
-       id="text1431-3-3"
-       y="10.402195"
-       x="7.747673"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.51503px;line-height:1.35;font-family:Emmett;-inkscape-font-specification:Emmett;text-align:center;text-anchor:middle;stroke-width:0.0443487"
-       xml:space="preserve"><tspan
+       aria-label="9">
+      <path
+         id="path842"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Emmett;-inkscape-font-specification:Emmett;stroke-width:0.174169"
+         d="m 24.491914,43.042469 q -0.334406,-0.702253 -0.53505,-1.504827 -0.167203,-0.836015 -0.167203,-1.772352 0,-3.477823 1.337624,-5.55114 1.337624,-2.106758 4.347279,-3.210298 1.304183,-0.501609 2.875891,-0.501609 0.53505,0 1.136981,0.100322 3.711907,0.501609 5.651461,3.143417 2.073318,2.842451 2.073318,8.226387 0,6.019309 -2.641808,9.564012 -2.641807,3.511264 -7.290051,4.012873 -0.53505,0 -1.036659,0 -0.501609,0 -0.936336,0.03344 l -0.200644,-0.03344 -1.705471,-0.300966 q -1.13698,-0.200643 -1.471386,-0.401287 -0.334406,-0.200644 -0.334406,-0.735693 0,-0.133763 0.06688,-0.668812 l 0.635371,-1.67203 q 0.200644,-0.53505 0.434728,-1.10354 0.267525,-0.601931 0.702253,-0.601931 0.234084,0 0.601931,0.133762 0.367846,0.133763 1.13698,0.501609 0.267525,0.100322 0.668812,0.100322 0.702253,0 1.404505,-0.234084 0.735694,-0.267525 1.404506,-0.836015 0.267525,-0.234084 0.434728,-0.401287 0.100321,-0.100322 0.300965,-0.434728 0.53505,-0.936337 0.53505,-1.437946 0,-0.367847 -0.234085,-0.56849 -0.167203,-0.167203 -0.200643,-0.167203 -0.167203,0 -2.474605,0.468168 -0.468168,0.06688 -0.735693,0.06688 -0.702253,0 -1.705471,-0.267524 -2.742129,-0.802575 -4.079753,-3.945991 z m 5.751783,-4.079754 0.03344,0.601931 q 0,0.668812 0.133762,1.10354 0.167203,0.434728 0.434728,0.836015 0.501609,0.668812 1.371065,0.668812 0.969777,0 1.471386,-0.802574 0.53505,-0.802575 0.53505,-1.772352 0,-0.300966 -0.03344,-0.468169 -0.167203,-1.237302 -0.535049,-1.839233 -0.367847,-0.635371 -1.036659,-0.869455 -0.300965,-0.100322 -0.601931,-0.100322 -0.702252,0 -1.237302,0.535049 -0.53505,0.53505 -0.53505,2.106758 z" />
+    </g>
+    <g
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.51502px;line-height:1.35;font-family:Emmett;-inkscape-font-specification:Emmett;text-align:center;text-anchor:middle;stroke-width:0.0443487"
+       id="text1431-3"
+       transform="scale(0.97823792,1.0222462)"
+       aria-label="9">
+      <path
+         id="path845"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Emmett;-inkscape-font-specification:Emmett;stroke-width:0.0443487"
-         y="10.402195"
-         x="7.747673"
-         id="tspan1429-2-5"
-         sodipodi:role="line">9</tspan></text>
+         d="m 55.282876,79.237274 q -0.08515,-0.178816 -0.13624,-0.383176 -0.04257,-0.212876 -0.04257,-0.451296 0,-0.885562 0.340601,-1.413494 0.340601,-0.536446 1.106952,-0.817442 0.332086,-0.127725 0.732292,-0.127725 0.136241,0 0.289511,0.02555 0.945167,0.127725 1.439038,0.800412 0.527932,0.723777 0.527932,2.094695 0,1.532704 -0.672687,2.435296 -0.672687,0.894077 -1.856274,1.021802 -0.136241,0 -0.263966,0 -0.127725,0 -0.238421,0.0085 l -0.05109,-0.0085 -0.434266,-0.07663 q -0.28951,-0.05109 -0.374661,-0.10218 -0.08515,-0.05109 -0.08515,-0.187331 0,-0.03406 0.01703,-0.1703 l 0.161786,-0.425751 q 0.05109,-0.13624 0.110695,-0.280996 0.06812,-0.15327 0.178815,-0.15327 0.0596,0 0.153271,0.03406 0.09367,0.03406 0.28951,0.127725 0.06812,0.02554 0.170301,0.02554 0.178815,0 0.357631,-0.0596 0.18733,-0.06812 0.35763,-0.212875 0.06812,-0.05961 0.110696,-0.102181 0.02555,-0.02555 0.07663,-0.110695 0.13624,-0.23842 0.13624,-0.366146 0,-0.09367 -0.0596,-0.144755 -0.04257,-0.04257 -0.05109,-0.04257 -0.04257,0 -0.630112,0.11921 -0.11921,0.01703 -0.18733,0.01703 -0.178815,0 -0.434266,-0.06812 -0.698232,-0.20436 -1.038833,-1.004772 z m 1.464584,-1.038833 0.0085,0.153271 q 0,0.1703 0.03406,0.280995 0.04257,0.110695 0.110695,0.212876 0.127726,0.1703 0.349116,0.1703 0.246936,0 0.374661,-0.20436 0.13624,-0.204361 0.13624,-0.451296 0,-0.07664 -0.0085,-0.119211 -0.04257,-0.315056 -0.13624,-0.468326 -0.09367,-0.161785 -0.263966,-0.22139 -0.07664,-0.02554 -0.15327,-0.02554 -0.178815,0 -0.315056,0.13624 -0.13624,0.13624 -0.13624,0.536446 z" />
+    </g>
+    <g
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.51503px;line-height:1.35;font-family:Emmett;-inkscape-font-specification:Emmett;text-align:center;text-anchor:middle;stroke-width:0.0443487"
+       id="text1431-3-3"
+       transform="scale(0.97823792,1.0222462)"
+       aria-label="9">
+      <path
+         id="path848"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Emmett;-inkscape-font-specification:Emmett;stroke-width:0.0443487"
+         d="M 5.7039328,7.3367842 Q 5.6187825,7.1579686 5.5676923,6.9536079 5.5251172,6.7407321 5.5251172,6.5023113 q 0,-0.8855631 0.3406012,-1.413495 Q 6.2063196,4.5523694 6.9726723,4.2713734 7.3047584,4.143648 7.7049648,4.143648 q 0.1362405,0 0.2895111,0.025545 0.9451683,0.1277254 1.43904,0.8004128 0.5279319,0.7237775 0.5279319,2.0946974 0,1.5327053 -0.6726874,2.4352985 -0.6726874,0.8940782 -1.8562765,1.0218032 -0.1362405,0 -0.2639659,0 -0.1277255,0 -0.2384209,0.0085 l -0.05109,-0.0085 -0.4342665,-0.07663 q -0.289511,-0.05109 -0.3746613,-0.10218 -0.08515,-0.05109 -0.08515,-0.187331 0,-0.03406 0.01703,-0.1703005 L 6.1637444,9.559207 q 0.05109,-0.1362405 0.1106954,-0.280996 0.06812,-0.1532705 0.1788156,-0.1532705 0.059605,0 0.1532706,0.03406 0.093665,0.03406 0.289511,0.1277255 0.06812,0.025545 0.1703006,0.025545 0.1788156,0 0.3576313,-0.059605 0.1873306,-0.06812 0.3576312,-0.2128757 0.06812,-0.059605 0.1106954,-0.1021804 0.025545,-0.025545 0.076635,-0.1106954 0.1362404,-0.2384208 0.1362404,-0.3661462 0,-0.093665 -0.059605,-0.1447556 -0.042575,-0.042575 -0.05109,-0.042575 -0.042575,0 -0.6301123,0.1192104 -0.1192104,0.01703 -0.1873306,0.01703 -0.1788156,0 -0.4342665,-0.06812 Q 6.044534,8.137197 5.7039328,7.3367842 Z M 7.168518,6.2979506 7.177033,6.4512211 q 0,0.1703006 0.03406,0.280996 0.042575,0.1106954 0.1106954,0.2128757 0.1277254,0.1703006 0.3491162,0.1703006 0.2469359,0 0.3746613,-0.2043607 0.1362405,-0.2043607 0.1362405,-0.4512966 0,-0.076635 -0.00852,-0.1192104 Q 8.1307163,6.0254696 8.037051,5.8721991 7.9433857,5.7104135 7.7730851,5.6508083 7.6964498,5.6252632 7.6198145,5.6252632 q -0.1788156,0 -0.3150561,0.1362405 Q 7.168518,5.8977442 7.168518,6.2979506 Z" />
+    </g>
   </g>
 </svg>
