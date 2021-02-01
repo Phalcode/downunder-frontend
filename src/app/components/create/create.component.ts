@@ -31,7 +31,6 @@ export class CreateComponent {
       })
       .subscribe(
         (session: ISession) => {
-          console.log(session);
           this.service.session = session;
         },
         (error) => {
