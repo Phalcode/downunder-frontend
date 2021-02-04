@@ -2,14 +2,18 @@
   <!--Players-->
   <div class="w-full grid grid-rows-1 gap-6">
     <div
-      class="bg-white rounded-lg py-1 whitespace-nowrap p-3 w-full"
+      class="rounded-lg py-1 whitespace-nowrap p-3 w-full"
+      [ngClass]="{'bg-gray-900': player.state === PlayerStateEnum.Loser, 'text-white': player.state === PlayerStateEnum.Loser, 'opacity-60': player.state === PlayerStateEnum.Loser,
+                  'bg-white': player.state === PlayerStateEnum.Ingame, 'text-gray-900': player.state === PlayerStateEnum.Ingame,
+                  'bg-green': player.state === PlayerStateEnum.Winner, 'text-white': player.state === PlayerStateEnum.Winner
+                 }"
       *ngFor="let player of service.session?.players; let i = index"
       [class.bg-green-400]="player?.turn"
     >
       <img class="rounded-full w-24 float-left" src="{{player?.imageUrl}}" />
-      <h3 class="text-center text-xl text-gray-900 font-medium leading-8 overflow-hidden">{{player?.username}}</h3>
-      <h2 class="text-center text-l text-gray-900 overflow-hidden">{{player?.chips}} Chips</h2>
-      <h2 class="text-center text-l text-gray-900 overflow-hidden">{{PlayerStateEnum[player?.state]}}</h2>
+      <h3 class="text-center text-xl font-medium leading-8 overflow-hidden">{{player?.username}}</h3>
+      <h2 class="text-center text-l overflow-hidden">{{player?.chips}} Chips</h2>
+      <h2 class="text-center text-l overflow-hidden italic">{{PlayerStateEnum[player?.state]}}</h2>
     </div>
   </div>
   <!-- Grow  -->
