@@ -56,8 +56,8 @@ export class GameComponent implements OnInit, OnDestroy {
     let value = count / 77;
     if (value > 1) value = 1;
     else if (value < 0) value = 0;
-    const hue = ((1 - value) * 120).toString(10);
-    return `hsl(${hue},100%,50%)`;
+    value = 1;
+    return `hsl(0,100%,${100 - 42 * value}%)`;
   }
 
   private setupRefreshTimer(): void {
