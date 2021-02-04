@@ -22,7 +22,7 @@
   <!-- Grow  -->
   <span class="flex-grow"></span>
   <!-- Count And Last Card  -->
-  <h1 id="count" class="font-black text-white">{{service.session?.count}}</h1>
+  <h1 id="count" class="font-black" [ngStyle]="{color: getCountColor(service.session?.count)}">{{service.session?.count}}</h1>
   <div *ngIf="lastCard" class="h-32 w-24 relative">
     <img draggable="false" [src]="lastCard.source" class="absolute" style="filter: grayscale(75%)" />
   </div>

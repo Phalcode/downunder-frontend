@@ -52,6 +52,14 @@ export class GameComponent implements OnInit, OnDestroy {
     this.service.endTurn(this.sessionId, this.playerId).subscribe((session: ISession) => this.refreshInfo(session));
   }
 
+  getCountColor(count: number): string {
+    let value = count / 77;
+    if (value > 1) value = 1;
+    else if (value < 0) value = 0;
+    const hue = ((1 - value) * 120).toString(10);
+    return `hsl(${hue},100%,50%)`;
+  }
+
   private setupRefreshTimer(): void {
     this.timer = timer(0, this.refreshInterval).subscribe(() => {
       this.service.getSession(this.sessionId, this.playerId).subscribe((session: ISession) => this.refreshInfo(session));
@@ -67,11 +75,11 @@ export class GameComponent implements OnInit, OnDestroy {
     }
     if (this.service.player.state === PlayerStateEnum.Winner && !this.blockConfetti) {
       this.blockConfetti = true;
-      this.shoot();
+      this.shootConfetti();
     }
   }
 
-  shoot(): void {
+  private shootConfetti(): void {
     const duration = 15 * 1000;
     const animationEnd = Date.now() + duration;
     const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
