@@ -2,11 +2,14 @@
   <!--Players-->
   <div class="w-full grid grid-rows-1 gap-6">
     <div
-      class="rounded-lg py-1 whitespace-nowrap p-3 w-full"
-      [ngClass]="{'bg-gray-900': player.state === PlayerStateEnum.Loser, 'text-white': player.state === PlayerStateEnum.Loser, 'opacity-60': player.state === PlayerStateEnum.Loser,
-                  'bg-white': player.state === PlayerStateEnum.Ingame, 'text-gray-900': player.state === PlayerStateEnum.Ingame,
-                  'bg-green': player.state === PlayerStateEnum.Winner, 'text-white': player.state === PlayerStateEnum.Winner
-                 }"
+      class="rounded-2xl py-1 whitespace-nowrap p-3 w-full bg-opacity-80"
+      [ngClass]="{'bg-gray-900': player.state === PlayerStateEnum.Loser, 
+                  'opacity-50': player.state === PlayerStateEnum.Loser,
+                  'bg-white': player.state === PlayerStateEnum.Ingame, 
+                  'text-gray-900': player.state === PlayerStateEnum.Ingame,
+                  'bg-green-500': player.state === PlayerStateEnum.Winner,
+                  'text-white': player.state !== PlayerStateEnum.Ingame
+                }"
       *ngFor="let player of service.session?.players; let i = index"
       [class.bg-green-400]="player?.turn"
     >
