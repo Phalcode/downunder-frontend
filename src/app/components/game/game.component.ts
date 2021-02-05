@@ -56,7 +56,6 @@ export class GameComponent implements OnInit, OnDestroy {
     let value = count / 77;
     if (value > 1) value = 1;
     else if (value < 0) value = 0;
-    value = 1;
     return `hsl(0,100%,${100 - 42 * value}%)`;
   }
 
