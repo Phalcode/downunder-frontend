@@ -1,9 +1,10 @@
-import { Injectable } from "@angular/core";
+import { Injectable, NgZone } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "../../environments/environment";
 import { IPlayer } from "../../models/IPlayer";
 import { ISession } from "../../models/ISession";
+import { Session } from "inspector";
 
 @Injectable({
   providedIn: "root"
@@ -12,14 +13,28 @@ export class DownUnderService {
   public session: ISession;
   public player: IPlayer;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private zone: NgZone) {}
 
-  createSession(sessionInformation: ISession): Observable<ISession> {
-    return this.http.post<ISession>(`${environment.backendUrl}/session`, sessionInformation);
+  private getEventSource(url: string): EventSource {
+    return new EventSource(url);
   }
 
   getSession(sessionId: string, playerId: string): Observable<ISession> {
-    return this.http.get<ISession>(`${environment.backendUrl}/session/${sessionId}/player/${playerId}`);
+    const url = `${environment.backendUrl}/session/${sessionId}/player/${playerId}`;
+    return new Observable((observer) => {
+      const eventSource = this.getEventSource(url);
+      eventSource.onmessage = (message) => {
+        const session = JSON.parse(message.data) as ISession;
+        observer.next(session);
+      };
+      eventSource.onerror = (error) => {
+        observer.error(error);
+      };
+    });
+  }
+
+  createSession(sessionInformation: ISession): Observable<ISession> {
+    return this.http.post<ISession>(`${environment.backendUrl}/session`, sessionInformation);
   }
 
   deleteSession(sessionId: string): Observable<unknown> {

@@ -7,6 +7,7 @@ import { IPlayer } from "../../../models/IPlayer";
 import { ISession } from "../../../models/ISession";
 import { PlayerStateEnum } from "../../../models/PlayerStateEnum";
 import confetti from "canvas-confetti";
+import { Session } from "inspector";
 
 @Component({
   selector: "app-game",
@@ -16,9 +17,8 @@ import confetti from "canvas-confetti";
 })
 export class GameComponent implements OnInit, OnDestroy {
   private blockConfetti = false;
-  readonly refreshInterval: number = 2000;
-  timer: Subscription;
   PlayerStateEnum: typeof PlayerStateEnum = PlayerStateEnum;
+  sessionSubscription: Subscription;
   sessionId: string;
   playerId: string;
   lastCard: ICard;
@@ -34,13 +34,15 @@ export class GameComponent implements OnInit, OnDestroy {
       void this.router.navigate(["/join", this.sessionId]);
       return;
     }
-    this.setupRefreshTimer();
+    this.sessionSubscription = this.service.getSession(this.sessionId, this.playerId).subscribe((data) => {
+      this.refreshInfo(data);
+    });
   }
 
   ngOnDestroy(): void {
     sessionStorage.removeItem("playerId");
-    if (this.timer) {
-      this.timer.unsubscribe();
+    if (this.sessionSubscription) {
+      this.sessionSubscription.unsubscribe();
     }
   }
 
@@ -57,12 +59,6 @@ export class GameComponent implements OnInit, OnDestroy {
     if (value > 1) value = 1;
     else if (value < 0) value = 0;
     return `hsl(0,100%,${100 - 42 * value}%)`;
-  }
-
-  private setupRefreshTimer(): void {
-    this.timer = timer(0, this.refreshInterval).subscribe(() => {
-      this.service.getSession(this.sessionId, this.playerId).subscribe((session: ISession) => this.refreshInfo(session));
-    });
   }
 
   private refreshInfo(session: ISession): void {

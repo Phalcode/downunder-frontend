@@ -1,7 +1,6 @@
 import { ICardSet } from "./ICardSet";
 import { IPlayer } from "./IPlayer";
 import { SessionStateEnum } from "./SessionStateEnum";
-
 export interface ISession {
   id?: string;
   SETTING_NAME?: string;

@@ -31,11 +31,6 @@ describe("DownUnderService", () => {
     expect(httpMock.post).toHaveBeenCalledTimes(1);
   });
 
-  test("should get a session", () => {
-    service.getSession("ASDFG", "ASDFG");
-    expect(httpMock.get).toHaveBeenCalledTimes(1);
-  });
-
   test("should delete a session", () => {
     service.deleteSession("ASDFG");
     expect(httpMock.delete).toHaveBeenCalledTimes(1);
