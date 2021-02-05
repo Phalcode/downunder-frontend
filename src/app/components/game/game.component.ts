@@ -62,6 +62,7 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   private refreshInfo(session: ISession): void {
+    console.log(session);
     this.service.session = session;
     this.service.player = session.players.find((player: IPlayer) => player.id === this.playerId);
     this.lastCard = session.cardset.playedCards.slice(-1)[0];

@@ -24,11 +24,15 @@ export class DownUnderService {
     return new Observable((observer) => {
       const eventSource = this.getEventSource(url);
       eventSource.onmessage = (message) => {
-        const session = JSON.parse(message.data) as ISession;
-        observer.next(session);
+        this.zone.run(() => {
+          const session = JSON.parse(message.data) as ISession;
+          observer.next(session);
+        });
       };
       eventSource.onerror = (error) => {
-        observer.error(error);
+        this.zone.run(() => {
+          observer.error(error);
+        });
       };
     });
   }
