@@ -25,12 +25,14 @@ export class DownUnderService {
       const eventSource = this.getEventSource(url);
       eventSource.onmessage = (message) => {
         this.zone.run(() => {
+          console.log("Data Received from Eventstream.", message.data);
           const session = JSON.parse(message.data) as ISession;
           observer.next(session);
         });
       };
       eventSource.onerror = (error) => {
         this.zone.run(() => {
+          console.log("Failed Receiving Data from Eventstream.", error);
           observer.error(error);
         });
       };
