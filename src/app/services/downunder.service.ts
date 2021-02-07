@@ -44,7 +44,7 @@ export class DownUnderService {
   }
 
   handshake(sessionId: string, playerId: string): Observable<unknown> {
-    return this.http.get<ISession>(`${environment.backendUrl}/session/${sessionId}/player/${playerId}/handshake`);
+    return this.http.get<unknown>(`${environment.backendUrl}/session/${sessionId}/player/${playerId}/handshake`);
   }
 
   createSession(sessionInformation: ISession): Observable<ISession> {
