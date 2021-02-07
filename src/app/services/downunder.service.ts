@@ -30,8 +30,10 @@ export class DownUnderService {
         });
       };
       eventSource.onopen = () => {
-        this.handshake(sessionId, playerId).subscribe(() => {
-          console.log("Handshake complete.");
+        this.zone.run(() => {
+          this.handshake(sessionId, playerId).subscribe(() => {
+            console.log("Handshake complete.");
+          });
         });
       };
       eventSource.onerror = (error) => {
