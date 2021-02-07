@@ -4,7 +4,6 @@ import { Observable } from "rxjs";
 import { environment } from "../../environments/environment";
 import { IPlayer } from "../../models/IPlayer";
 import { ISession } from "../../models/ISession";
-import { Session } from "inspector";
 
 @Injectable({
   providedIn: "root"
@@ -19,7 +18,7 @@ export class DownUnderService {
     return new EventSource(url);
   }
 
-  getSession(sessionId: string, playerId: string): Observable<ISession> {
+  streamSession(sessionId: string, playerId: string): Observable<ISession> {
     const url = `${environment.backendUrl}/session/${sessionId}/player/${playerId}`;
     return new Observable((observer) => {
       const eventSource = this.getEventSource(url);
@@ -30,6 +29,11 @@ export class DownUnderService {
           observer.next(session);
         });
       };
+      eventSource.onopen = () => {
+        this.handshake(sessionId, playerId).subscribe(() => {
+          console.log("Handshake complete.");
+        });
+      };
       eventSource.onerror = (error) => {
         this.zone.run(() => {
           console.log("Failed Receiving Data from Eventstream.", error);
@@ -37,6 +41,10 @@ export class DownUnderService {
         });
       };
     });
+  }
+
+  handshake(sessionId: string, playerId: string): Observable<unknown> {
+    return this.http.get<ISession>(`${environment.backendUrl}/session/${sessionId}/player/${playerId}/handshake`);
   }
 
   createSession(sessionInformation: ISession): Observable<ISession> {
