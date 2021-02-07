@@ -7,7 +7,6 @@ import { IPlayer } from "../../../models/IPlayer";
 import { ISession } from "../../../models/ISession";
 import { PlayerStateEnum } from "../../../models/PlayerStateEnum";
 import confetti from "canvas-confetti";
-import { Session } from "inspector";
 
 @Component({
   selector: "app-game",
@@ -34,7 +33,7 @@ export class GameComponent implements OnInit, OnDestroy {
       void this.router.navigate(["/join", this.sessionId]);
       return;
     }
-    this.sessionSubscription = this.service.getSession(this.sessionId, this.playerId).subscribe((data) => {
+    this.sessionSubscription = this.service.streamSession(this.sessionId, this.playerId).subscribe((data) => {
       this.refreshInfo(data);
     });
   }
