@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Subscription, timer } from "rxjs";
+import { Subscription } from "rxjs";
+import { retry } from "rxjs/operators";
 import { DownUnderService } from "../../../app/services/downunder.service";
 import { ICard } from "../../../models/ICard";
 import { IPlayer } from "../../../models/IPlayer";
@@ -33,9 +34,12 @@ export class GameComponent implements OnInit, OnDestroy {
       void this.router.navigate(["/join", this.sessionId]);
       return;
     }
-    this.sessionSubscription = this.service.streamSession(this.sessionId, this.playerId).subscribe((data) => {
-      this.refreshInfo(data);
-    });
+    this.sessionSubscription = this.service
+      .streamSession(this.sessionId, this.playerId)
+      .pipe(retry())
+      .subscribe((data) => {
+        this.refreshInfo(data);
+      });
   }
 
   ngOnDestroy(): void {
