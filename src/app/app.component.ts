@@ -17,5 +17,6 @@ export class AppComponent {
       window.location.reload();
     });
     void this.ackeeServ.visit(this.router.events.pipe(filter((evt) => evt instanceof NavigationEnd)));
+    console.log(`v${this.currentApplicationVersion}`);
   }
 }

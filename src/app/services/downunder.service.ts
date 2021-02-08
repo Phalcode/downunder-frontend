@@ -24,7 +24,7 @@ export class DownUnderService {
       const eventSource = this.getEventSource(url);
       eventSource.onmessage = (message) => {
         this.zone.run(() => {
-          console.log("Data Received from Eventstream.", message.data);
+          console.log("Data Received from Eventstream.");
           const session = JSON.parse(message.data) as ISession;
           observer.next(session);
         });

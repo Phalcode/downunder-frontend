@@ -1,15 +1,16 @@
-<div class="w-screen h-screen p-10 flex flex-col items-center justify-center">
+<span class="flex flex-col flex-grow items-center justify-center h-full">
+  <h1 class="text-white font-semibold sm:text-2xl md:text-3xl lg:text-4xl mb-5">{{service.session?.SETTING_NAME}}</h1>
   <!--Players-->
   <div class="w-full grid grid-rows-1 gap-6">
     <div
-      class="rounded-2xl py-1 whitespace-nowrap p-3 w-full bg-opacity-80"
+      class="md:rounded-md rounded-2xl py-1 whitespace-nowrap p-3 w-full bg-opacity-80"
       [ngClass]="{'bg-gray-900': player.state === PlayerStateEnum.Loser, 
-                  'opacity-50': player.state === PlayerStateEnum.Loser,
-                  'bg-white': player.state === PlayerStateEnum.Ingame, 
-                  'text-gray-900': player.state === PlayerStateEnum.Ingame,
-                  'bg-green-500': player.state === PlayerStateEnum.Winner,
-                  'text-white': player.state !== PlayerStateEnum.Ingame
-                }"
+      'opacity-50': player.state === PlayerStateEnum.Loser,
+      'bg-white': player.state === PlayerStateEnum.Ingame, 
+      'text-gray-900': player.state === PlayerStateEnum.Ingame,
+      'bg-green-500': player.state === PlayerStateEnum.Winner,
+      'text-white': player.state !== PlayerStateEnum.Ingame
+    }"
       *ngFor="let player of service.session?.players; let i = index"
       [class.bg-green-400]="player?.turn"
     >
@@ -23,20 +24,20 @@
   <span class="flex-grow"></span>
   <!-- Count And Last Card  -->
   <h1 id="count" class="font-black" [ngStyle]="{color: getCountColor(service.session?.count)}">{{service.session?.count}}</h1>
-  <div *ngIf="lastCard" class="h-32 w-24 relative">
+  <div *ngIf="lastCard" class="w-24 relative">
     <img draggable="false" [src]="lastCard.source" class="absolute" style="filter: grayscale(75%)" />
   </div>
   <!-- Grow  -->
   <span class="flex-grow"></span>
   <!-- Cards -->
-  <div class="w-3/4 flex space-x-6 items-center justify-center">
-    <span *ngFor="let card of service.player?.cards; let i = index" class="h-80 w-60 cursor-pointer">
+  <table class="m-5">
+    <td *ngFor="let card of service.player?.cards; let i = index" class="cursor-pointer">
       <img
         draggable="false"
         [src]="card.source"
         class="transform hover:scale-110 hover:-translate-y-5 transition duration-200"
         (click)="playCard(card.id)"
       />
-    </span>
-  </div>
-</div>
+    </td>
+  </table>
+</span>
