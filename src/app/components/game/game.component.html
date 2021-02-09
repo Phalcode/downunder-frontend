@@ -1,43 +1,47 @@
-<span class="flex flex-col flex-grow items-center justify-center h-full">
-  <h1 class="text-white font-semibold sm:text-2xl md:text-3xl lg:text-4xl mb-5">{{service.session?.SETTING_NAME}}</h1>
-  <!--Players-->
-  <div class="w-full grid grid-rows-1 gap-6">
-    <div
-      class="md:rounded-md rounded-2xl py-1 whitespace-nowrap p-3 w-full bg-opacity-80"
-      [ngClass]="{'bg-gray-900': player.state === PlayerStateEnum.Loser, 
+<span class="flex flex-col p-5 h-screen">
+  <h1 class="text-white font-semibold text-3xl mb-5">{{service.session?.SETTING_NAME}}</h1>
+  <span class="flex flex-col flex-grow items-center justify-center">
+    <!--Players-->
+    <div class="w-full grid grid-rows-1 gap-6">
+      <div
+        class="md:rounded-md rounded-2xl py-1 whitespace-nowrap p-3 w-full bg-opacity-80"
+        [ngClass]="{'bg-gray-900': player.state === PlayerStateEnum.Loser, 
       'opacity-50': player.state === PlayerStateEnum.Loser,
       'bg-white': player.state === PlayerStateEnum.Ingame, 
       'text-gray-900': player.state === PlayerStateEnum.Ingame,
       'bg-green-500': player.state === PlayerStateEnum.Winner,
       'text-white': player.state !== PlayerStateEnum.Ingame
     }"
-      *ngFor="let player of service.session?.players; let i = index"
-      [class.bg-green-400]="player?.turn"
-    >
-      <img class="rounded-full w-24 float-left" src="{{player?.imageUrl}}" />
-      <h3 class="text-center text-xl font-medium leading-8 overflow-hidden">{{player?.username}}</h3>
-      <h2 class="text-center text-l overflow-hidden">{{player?.chips}} Chips</h2>
-      <h2 class="text-center text-l overflow-hidden italic">{{PlayerStateEnum[player?.state]}}</h2>
+        *ngFor="let player of service.session?.players; let i = index"
+        [class.bg-green-400]="player?.turn"
+      >
+        <img class="rounded-full w-24 float-left" src="{{player?.imageUrl}}" />
+        <h3 class="text-center text-xl font-medium leading-8 overflow-hidden">{{player?.username}}</h3>
+        <h2 class="text-center text-l overflow-hidden">{{player?.chips}} Chips</h2>
+        <h2 class="text-center text-l overflow-hidden italic">{{PlayerStateEnum[player?.state]}}</h2>
+      </div>
     </div>
-  </div>
-  <!-- Grow  -->
-  <span class="flex-grow"></span>
-  <!-- Count And Last Card  -->
-  <h1 id="count" class="font-black" [ngStyle]="{color: getCountColor(service.session?.count)}">{{service.session?.count}}</h1>
-  <div *ngIf="lastCard" class="w-24 relative">
-    <img draggable="false" [src]="lastCard.source" class="absolute" style="filter: grayscale(75%)" />
-  </div>
-  <!-- Grow  -->
-  <span class="flex-grow"></span>
+    <!-- Grow  -->
+    <span class="flex-grow"></span>
+    <!-- Count And Last Card  -->
+    <h1 id="count" class="font-black text-9xl" [ngStyle]="{color: getCountColor(service.session?.count)}">{{service.session?.count}}</h1>
+    <div *ngIf="lastCard">
+      <img draggable="false" [src]="lastCard.source" class="w-20" style="filter: grayscale(75%)" />
+    </div>
+    <!-- Grow  -->
+    <span class="flex-grow"></span>
+  </span>
   <!-- Cards -->
-  <table class="m-5">
-    <td *ngFor="let card of service.player?.cards; let i = index" class="cursor-pointer">
-      <img
-        draggable="false"
-        [src]="card.source"
-        class="transform hover:scale-110 hover:-translate-y-5 transition duration-200"
-        (click)="playCard(card.id)"
-      />
-    </td>
-  </table>
+  <span class="flex justify-center">
+    <table class="">
+      <td *ngFor="let card of service.player?.cards; let i = index" class="cursor-pointer">
+        <img
+          draggable="false"
+          [src]="card.source"
+          class="transform hover:-translate-y-6 transition duration-200"
+          (click)="playCard(card.id)"
+        />
+      </td>
+    </table>
+  </span>
 </span>
