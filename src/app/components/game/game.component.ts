@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs";
-import { retry } from "rxjs/operators";
+import { delay, retry, retryWhen } from "rxjs/operators";
 import { DownUnderService } from "../../../app/services/downunder.service";
 import { ICard } from "../../../models/ICard";
 import { IPlayer } from "../../../models/IPlayer";
@@ -37,7 +37,7 @@ export class GameComponent implements OnInit, OnDestroy {
     }
     this.sessionSubscription = this.service
       .streamSession(this.sessionId, this.playerId)
-      .pipe(retry())
+      .pipe(retryWhen(delay(1000)))
       .subscribe((data) => {
         this.refreshInfo(data);
       });
@@ -66,9 +66,13 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   private refreshInfo(session: ISession): void {
-    console.log(session);
+    const player = session.players.find((player: IPlayer) => player.id === this.playerId);
+    const playerPos = session.players.indexOf(player);
+    const spliceSet = session.players.splice(0, playerPos);
+    session.players = session.players.concat(spliceSet);
+
     this.service.session = session;
-    this.service.player = session.players.find((player: IPlayer) => player.id === this.playerId);
+    this.service.player = player;
     this.lastCard = session.cardset.playedCards.slice(-1)[0];
 
     let titleText = `Downunder - ${session.count} - ${session.players.length}/${session.SETTING_MAX_PLAYERS}`;
