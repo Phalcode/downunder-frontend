@@ -1,104 +1,106 @@
-<form (submit)="createSession()" class="shadow-xl bg-gray-100 bg-opacity-90 p-5 max-w-xl rounded-xl">
-  <h1 class="font-bold text-3xl mb-4">Create Session</h1>
-  <h2 class="text-xl font-semibold mb-4">
-    Hi there 👋<span class="font-normal"
-      ><br />
-      Please fill out the form to start a new session</span
-    >
-  </h2>
-  <!--Session Name-->
-  <label for="sessionNameInput" class="font-bold">Session Name</label>
-  <div class="mb-4">
+<span class="flex justify-center items-center h-screen">
+  <form (submit)="createSession()" class="shadow-xl bg-gray-100 bg-opacity-90 p-5 max-w-xl sm:rounded-xl w-full sm:w-auto">
+    <h1 class="font-bold text-3xl mb-4">Create Session</h1>
+    <h2 class="text-xl font-semibold mb-4">
+      Hi there 👋<span class="font-normal"
+        ><br />
+        Please fill out the form to start a new session</span
+      >
+    </h2>
+    <!--Session Name-->
+    <label for="sessionNameInput" class="font-bold">Session Name</label>
+    <div class="mb-4">
+      <input
+        appAutofocus
+        class="h-10 w-full rounded bg-drabya-gray border-gray-500 focus focus:border-blue-600 focus:outline-none active:outline-none active:border-blue-600 appearance-none border p-4 font-light leading-tight focus:shadow-outline"
+        type="text"
+        placeholder="Fresh Session 🍋"
+        maxlength="32"
+        id="sessionNameInput"
+        [(ngModel)]="sessionName"
+        name="sessionName"
+        minlength="3"
+        maxlength="32"
+        required
+      />
+    </div>
+
+    <!--Max Player Slider-->
+    <label for="maxplayerslider" class="font-bold">Maximum Players</label>
     <input
-      appAutofocus
-      class="h-10 w-full rounded bg-drabya-gray border-gray-500 focus focus:border-blue-600 focus:outline-none active:outline-none active:border-blue-600 appearance-none border p-4 font-light leading-tight focus:shadow-outline"
-      type="text"
-      placeholder="Fresh Session 🍋"
-      maxlength="32"
-      id="sessionNameInput"
-      [(ngModel)]="sessionName"
-      name="sessionName"
-      minlength="3"
-      maxlength="32"
+      class="w-full bg-white rounded-lg overflow-hidden border-gray-500 focus focus:border-blue-600 focus:outline-none active:outline-none active:border-blue-600 appearance-none h-3 cursor-pointer"
+      type="range"
+      min="2"
+      max="8"
+      id="maxplayerslider"
+      [(ngModel)]="maxPlayers"
+      name="maxPlayers"
       required
     />
-  </div>
-
-  <!--Max Player Slider-->
-  <label for="maxplayerslider" class="font-bold">Maximum Players</label>
-  <input
-    class="w-full bg-white rounded-lg overflow-hidden border-gray-500 focus focus:border-blue-600 focus:outline-none active:outline-none active:border-blue-600 appearance-none h-3 cursor-pointer"
-    type="range"
-    min="2"
-    max="8"
-    id="maxplayerslider"
-    [(ngModel)]="maxPlayers"
-    name="maxPlayers"
-    required
-  />
-  <div class="flex justify-between mt-2 mb-4 text-xs text-gray-600 font-bold">
-    <span class="w-8 text-left"> II</span>
-    <span class="w-8 text-center">III</span>
-    <span class="w-8 text-center">IV</span>
-    <span class="w-8 text-center">V</span>
-    <span class="w-8 text-center">VI</span>
-    <span class="w-8 text-center">VII</span>
-    <span class="w-8 text-right">VIII</span>
-  </div>
-
-  <!--Player Chips Selector-->
-  <div class="custom-number-input">
-    <label for="maxplayerslider" class="font-bold">Player Chips</label>
-    <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
-      <button
-        type="button"
-        class="bg-gray-300 text-gray-600 hover:text-gray-600 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none"
-        (click)="changePlayerChips(-1)"
-      >
-        <span class="m-auto text-2xl font-thin">−</span>
-      </button>
-      <input
-        type="number"
-        pattern="/^[0-9]{2}$/"
-        [(ngModel)]="playerChips"
-        name="playerChips"
-        class="outline-none focus:outline-none text-center w-full bg-white font-semibold text-md hover:text-black focus:text-black md:text-basecursor-default flex items-center text-gray-700"
-        name="custom-number-input"
-        onInput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-        value="3"
-        min="1"
-        max="99"
-        maxlength="2"
-        required
-        appDefaultValue
-        defaultVal="3"
-      />
-      <button
-        type="button"
-        class="bg-gray-300 text-gray-600 hover:text-gray-600 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer"
-        (click)="changePlayerChips(1)"
-      >
-        <span class="m-auto text-2xl font-thin">+</span>
-      </button>
+    <div class="flex justify-between mt-2 mb-4 text-xs text-gray-600 font-bold">
+      <span class="w-8 text-left"> II</span>
+      <span class="w-8 text-center">III</span>
+      <span class="w-8 text-center">IV</span>
+      <span class="w-8 text-center">V</span>
+      <span class="w-8 text-center">VI</span>
+      <span class="w-8 text-center">VII</span>
+      <span class="w-8 text-right">VIII</span>
     </div>
 
-    <!--Control Buttons-->
-    <div class="mt-8 flex">
-      <button
-        type="reset"
-        [routerLink]="['/']"
-        class="outline-none focus:outline-none bg-gray-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-red-600 w-32 mr-1"
-      >
-        Abort
-      </button>
-      <span class="flex-grow"></span>
-      <button
-        type="submit"
-        [disabled]="!sessionName"
-        class="outline-none focus:outline-none disabled:opacity-50 bg-green-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-green-600 w-32 ml-1 disabled:opacity-50"
-      >
-        Continue
-      </button>
+    <!--Player Chips Selector-->
+    <div class="custom-number-input">
+      <label for="maxplayerslider" class="font-bold">Player Chips</label>
+      <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+        <button
+          type="button"
+          class="bg-gray-300 text-gray-600 hover:text-gray-600 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none"
+          (click)="changePlayerChips(-1)"
+        >
+          <span class="m-auto text-2xl font-thin">−</span>
+        </button>
+        <input
+          type="number"
+          pattern="/^[0-9]{2}$/"
+          [(ngModel)]="playerChips"
+          name="playerChips"
+          class="outline-none focus:outline-none text-center w-full bg-white font-semibold text-md hover:text-black focus:text-black md:text-basecursor-default flex items-center text-gray-700"
+          name="custom-number-input"
+          onInput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+          value="3"
+          min="1"
+          max="99"
+          maxlength="2"
+          required
+          appDefaultValue
+          defaultVal="3"
+        />
+        <button
+          type="button"
+          class="bg-gray-300 text-gray-600 hover:text-gray-600 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer"
+          (click)="changePlayerChips(1)"
+        >
+          <span class="m-auto text-2xl font-thin">+</span>
+        </button>
+      </div>
+
+      <!--Control Buttons-->
+      <div class="mt-8 flex">
+        <button
+          type="reset"
+          [routerLink]="['/']"
+          class="outline-none focus:outline-none bg-gray-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-red-600 w-32 mr-1"
+        >
+          Abort
+        </button>
+        <span class="flex-grow"></span>
+        <button
+          type="submit"
+          [disabled]="!sessionName"
+          class="outline-none focus:outline-none disabled:opacity-50 bg-green-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-green-600 w-32 ml-1 disabled:opacity-50"
+        >
+          Continue
+        </button>
+      </div>
     </div>
-  </div>
-</form>
+  </form>
+</span>

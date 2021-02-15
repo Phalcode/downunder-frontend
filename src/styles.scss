@@ -5,3 +5,11 @@
   font-family: "Emmett";
   src: url("./assets/fonts/emmett.ttf") format("truetype");
 }
+
+html,
+body,
+.bg-cover {
+  min-height: 100vh;
+  height: auto;
+  margin: 0;
+}

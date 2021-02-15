@@ -1,52 +1,54 @@
-<form (submit)="joinSession()" class="shadow-xl bg-gray-100 bg-opacity-90 p-5 max-w-xl rounded-xl">
-  <h1 class="font-bold text-3xl mb-4">Join Session</h1>
+<span class="flex justify-center items-center h-screen">
+  <form (submit)="joinSession()" class="shadow-xl bg-gray-100 bg-opacity-90 p-5 max-w-xl sm:rounded-xl w-full sm:w-auto">
+    <h1 class="font-bold text-3xl mb-4">Join Session</h1>
 
-  <!--Session Code Input-->
-  <label for="sessionCodeInput" class="font-bold">Session Code</label>
-  <div>
-    <input
-      [(ngModel)]="sessionId"
-      name="sessionId"
-      class="h-10 w-full rounded bg-drabya-gray border-gray-500 focus focus:border-blue-600 focus:outline-none active:outline-none active:border-blue-600 appearance-none border p-4 font-light leading-tight focus:shadow-outline"
-      type="text"
-      placeholder="Session Code"
-      minlength="5"
-      maxlength="5"
-      required
-    />
-  </div>
-  <!-- Username Input-->
-  <label for="usernameInput" class="font-bold">Username</label>
-  <div class="mb-4">
-    <input
-      appAutofocus
-      [(ngModel)]="username"
-      name="username"
-      class="h-10 w-full rounded bg-drabya-gray border-gray-500 focus focus:border-blue-600 focus:outline-none active:outline-none active:border-blue-600 appearance-none border p-4 font-light leading-tight focus:shadow-outline"
-      type="text"
-      placeholder="Username"
-      id="usernameInput"
-      minlength="3"
-      maxlength="32"
-      required
-    />
-  </div>
-  <!--Controls-->
-  <div class="mt-8 flex">
-    <button
-      type="reset"
-      [routerLink]="['/']"
-      class="outline-none focus:outline-none bg-gray-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-red-600 w-32 mr-1"
-    >
-      Abort
-    </button>
-    <span class="flex-grow"></span>
-    <button
-      type="submit"
-      [disabled]="!username || !sessionId"
-      class="outline-none focus:outline-none disabled:opacity-50 bg-green-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-green-600 w-32 ml-1 disabled:opacity-50"
-    >
-      Continue
-    </button>
-  </div>
-</form>
+    <!--Session Code Input-->
+    <label for="sessionCodeInput" class="font-bold">Session Code</label>
+    <div>
+      <input
+        [(ngModel)]="sessionId"
+        name="sessionId"
+        class="h-10 w-full rounded bg-drabya-gray border-gray-500 focus focus:border-blue-600 focus:outline-none active:outline-none active:border-blue-600 appearance-none border p-4 font-light leading-tight focus:shadow-outline"
+        type="text"
+        placeholder="Session Code"
+        minlength="5"
+        maxlength="5"
+        required
+      />
+    </div>
+    <!-- Username Input-->
+    <label for="usernameInput" class="font-bold">Username</label>
+    <div class="mb-4">
+      <input
+        appAutofocus
+        [(ngModel)]="username"
+        name="username"
+        class="h-10 w-full rounded bg-drabya-gray border-gray-500 focus focus:border-blue-600 focus:outline-none active:outline-none active:border-blue-600 appearance-none border p-4 font-light leading-tight focus:shadow-outline"
+        type="text"
+        placeholder="Username"
+        id="usernameInput"
+        minlength="3"
+        maxlength="32"
+        required
+      />
+    </div>
+    <!--Controls-->
+    <div class="mt-8 flex">
+      <button
+        type="reset"
+        [routerLink]="['/']"
+        class="outline-none focus:outline-none bg-gray-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-red-600 w-32 mr-1"
+      >
+        Abort
+      </button>
+      <span class="flex-grow"></span>
+      <button
+        type="submit"
+        [disabled]="!username || !sessionId"
+        class="outline-none focus:outline-none disabled:opacity-50 bg-green-500 rounded-md font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-green-600 w-32 ml-1 disabled:opacity-50"
+      >
+        Continue
+      </button>
+    </div>
+  </form>
+</span>
