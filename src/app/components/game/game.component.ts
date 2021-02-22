@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs";
-import { delay, retry, retryWhen } from "rxjs/operators";
+import { delay, retryWhen } from "rxjs/operators";
 import { DownUnderService } from "../../../app/services/downunder.service";
 import { ICard } from "../../../models/ICard";
 import { IPlayer } from "../../../models/IPlayer";
