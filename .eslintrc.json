@@ -27,7 +27,6 @@
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
         "plugin:jest/recommended",
         "plugin:jest/style",
-        "prettier/@typescript-eslint",
         "plugin:prettier/recommended"
       ],
       "rules": {
@@ -52,7 +51,7 @@
     },
     {
       "files": ["*.html"],
-      "extends": ["plugin:@angular-eslint/template/recommended", "prettier/@typescript-eslint", "plugin:prettier/recommended"],
+      "extends": ["plugin:@angular-eslint/template/recommended", "plugin:prettier/recommended"],
       "rules": {}
     }
   ]

@@ -1,13 +1,14 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs";
-import { retry } from "rxjs/operators";
+import { delay, retryWhen } from "rxjs/operators";
 import { DownUnderService } from "../../../app/services/downunder.service";
 import { ICard } from "../../../models/ICard";
 import { IPlayer } from "../../../models/IPlayer";
 import { ISession } from "../../../models/ISession";
 import { PlayerStateEnum } from "../../../models/PlayerStateEnum";
 import confetti from "canvas-confetti";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-game",
@@ -16,14 +17,14 @@ import confetti from "canvas-confetti";
   providers: [DownUnderService]
 })
 export class GameComponent implements OnInit, OnDestroy {
-  private blockConfetti = false;
+  private blockEffects = false;
   PlayerStateEnum: typeof PlayerStateEnum = PlayerStateEnum;
   sessionSubscription: Subscription;
   sessionId: string;
   playerId: string;
   lastCard: ICard;
 
-  constructor(public service: DownUnderService, private router: Router, private route: ActivatedRoute) {}
+  constructor(public service: DownUnderService, private router: Router, private route: ActivatedRoute, private titleService: Title) {}
 
   ngOnInit(): void {
     this.sessionId = this.route.snapshot.paramMap.get("sessionId");
@@ -36,7 +37,7 @@ export class GameComponent implements OnInit, OnDestroy {
     }
     this.sessionSubscription = this.service
       .streamSession(this.sessionId, this.playerId)
-      .pipe(retry())
+      .pipe(retryWhen(delay(1000)))
       .subscribe((data) => {
         this.refreshInfo(data);
       });
@@ -65,16 +66,34 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   private refreshInfo(session: ISession): void {
-    console.log(session);
+    const player = session.players.find((player: IPlayer) => player.id === this.playerId);
+    const playerPos = session.players.indexOf(player);
+    const spliceSet = session.players.splice(0, playerPos);
+    session.players = session.players.concat(spliceSet);
+
     this.service.session = session;
-    this.service.player = session.players.find((player: IPlayer) => player.id === this.playerId);
+    this.service.player = player;
     this.lastCard = session.cardset.playedCards.slice(-1)[0];
-    if (this.service.player.state === PlayerStateEnum.Ingame) {
-      this.blockConfetti = false;
+
+    let titleText = `Downunder - ${session.count} - ${session.players.length}/${session.SETTING_MAX_PLAYERS}`;
+    if (this.service.player.turn) {
+      titleText += " - Your Turn!";
+      this.service.playSound("plop.wav");
     }
-    if (this.service.player.state === PlayerStateEnum.Winner && !this.blockConfetti) {
-      this.blockConfetti = true;
+
+    this.titleService.setTitle(titleText);
+
+    if (this.service.player.state === PlayerStateEnum.Ingame) {
+      this.blockEffects = false;
+    }
+    if (this.service.player.state === PlayerStateEnum.Winner && !this.blockEffects) {
+      this.blockEffects = true;
       this.shootConfetti();
+      this.service.playSound("win.wav");
+    }
+    if (this.service.player.state === PlayerStateEnum.Loser && !this.blockEffects) {
+      this.blockEffects = true;
+      this.service.playSound("lose.wav");
     }
   }
 

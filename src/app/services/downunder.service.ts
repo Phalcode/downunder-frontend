@@ -76,4 +76,11 @@ export class DownUnderService {
   resetSession(sessionId: string): Observable<ISession> {
     return this.http.delete<ISession>(`${environment.backendUrl}/session/${sessionId}`);
   }
+
+  playSound(file: string): void {
+    const audio = new Audio();
+    audio.src = `../../assets/sounds/${file}`;
+    audio.load();
+    void audio.play();
+  }
 }
