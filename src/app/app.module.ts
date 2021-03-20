@@ -57,7 +57,6 @@ const config: SocketIoConfig = { url: environment.backendUrl };
       registrationStrategy: "registerImmediately"
     })
   ],
-  providers: [DownUnderService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -6,8 +6,7 @@ import { IPlayer } from "../../../models/IPlayer";
 @Component({
   selector: "app-join",
   templateUrl: "./join.component.html",
-  styleUrls: ["./join.component.scss"],
-  providers: [DownUnderService]
+  styleUrls: ["./join.component.scss"]
 })
 export class JoinComponent {
   sessionId = "";

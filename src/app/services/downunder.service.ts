@@ -12,8 +12,17 @@ import { SocketReceivers } from "../models/SocketReceivers";
 export class DownUnderService {
   public session: ISession;
   public player: IPlayer;
+  public errorMessages: string[] = [];
 
-  constructor(private socket: Socket) {}
+  constructor(private socket: Socket) {
+    console.log("Hello");
+    this.observeErrors().subscribe((err) => {
+      this.errorMessages.push(err);
+      console.error(err);
+    });
+  }
+
+  desc
 
   observeSession(): Observable<ISession> {
     return this.socket.fromEvent<ISession>(SocketReceivers.SESSION);
@@ -21,6 +30,10 @@ export class DownUnderService {
 
   observePlayer(): Observable<IPlayer> {
     return this.socket.fromEvent<IPlayer>(SocketReceivers.PLAYER);
+  }
+
+  observeErrors(): Observable<string> {
+    return this.socket.fromEvent<string>(SocketReceivers.THROW_ERROR);
   }
 
   createSession(sessionInformation: ISession): Observable<ISession> {
@@ -34,7 +47,7 @@ export class DownUnderService {
   }
 
   getSession(sessionId: string, playerId: string): Observable<ISession> {
-    this.socket.emit(SocketEmitters.GET_SESSION);
+    this.socket.emit(SocketEmitters.GET_SESSION, sessionId, playerId);
     return this.observeSession();
   }
 

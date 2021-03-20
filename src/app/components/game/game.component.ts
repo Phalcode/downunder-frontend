@@ -7,15 +7,12 @@ import { ISession } from "../../../models/ISession";
 import { PlayerStateEnum } from "../../../models/PlayerStateEnum";
 import confetti from "canvas-confetti";
 import { Title } from "@angular/platform-browser";
-import { take } from "rxjs/operators";
-import { SocketEmitters } from "src/app/models/SocketEmitters";
 import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-game",
   templateUrl: "./game.component.html",
-  styleUrls: ["./game.component.scss"],
-  providers: [DownUnderService]
+  styleUrls: ["./game.component.scss"]
 })
 export class GameComponent implements OnInit, OnDestroy {
   private blockEffects = false;
@@ -36,7 +33,7 @@ export class GameComponent implements OnInit, OnDestroy {
       void this.router.navigate(["/join", this.sessionId]);
       return;
     }
-    this.sessionSubscription = this.service.getSession(this.sessionId, this.playerId).subscribe((session) => {
+    this.sessionSubscription = this.service.observeSession().subscribe((session) => {
       this.refreshInfo(session);
     });
   }

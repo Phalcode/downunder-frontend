@@ -7,8 +7,7 @@ import { take } from "rxjs/operators";
 @Component({
   selector: "app-create",
   templateUrl: "./create.component.html",
-  styleUrls: ["./create.component.scss"],
-  providers: [DownUnderService]
+  styleUrls: ["./create.component.scss"]
 })
 export class CreateComponent {
   sessionName = "";
