@@ -1,7 +1,5 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Subscription } from "rxjs";
-import { delay, retryWhen } from "rxjs/operators";
 import { DownUnderService } from "../../../app/services/downunder.service";
 import { ICard } from "../../../models/ICard";
 import { IPlayer } from "../../../models/IPlayer";
@@ -19,7 +17,6 @@ import { Title } from "@angular/platform-browser";
 export class GameComponent implements OnInit, OnDestroy {
   private blockEffects = false;
   PlayerStateEnum: typeof PlayerStateEnum = PlayerStateEnum;
-  sessionSubscription: Subscription;
   sessionId: string;
   playerId: string;
   lastCard: ICard;
@@ -35,19 +32,10 @@ export class GameComponent implements OnInit, OnDestroy {
       void this.router.navigate(["/join", this.sessionId]);
       return;
     }
-    this.sessionSubscription = this.service
-      .streamSession(this.sessionId, this.playerId)
-      .pipe(retryWhen(delay(1000)))
-      .subscribe((data) => {
-        this.refreshInfo(data);
-      });
   }
 
   ngOnDestroy(): void {
     sessionStorage.removeItem("playerId");
-    if (this.sessionSubscription) {
-      this.sessionSubscription.unsubscribe();
-    }
   }
 
   playCard(cardId: string): void {

@@ -1,17 +1,6 @@
 {
   "root": true,
   "ignorePatterns": ["projects/**/*"],
-  "plugins": ["jest"],
-  "rules": {
-    "jest/no-disabled-tests": "warn",
-    "jest/no-focused-tests": "error",
-    "jest/no-identical-title": "error",
-    "jest/prefer-to-have-length": "warn",
-    "jest/valid-expect": "error"
-  },
-  "env": {
-    "jest/globals": true
-  },
   "overrides": [
     {
       "files": ["*.ts"],
@@ -25,8 +14,6 @@
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
-        "plugin:jest/recommended",
-        "plugin:jest/style",
         "plugin:prettier/recommended"
       ],
       "rules": {

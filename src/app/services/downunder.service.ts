@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Socket } from "ngx-socket-io";
 import { Observable } from "rxjs";
-import { environment } from "../../environments/environment";
 import { IPlayer } from "../../models/IPlayer";
 import { ISession } from "../../models/ISession";
 import { SocketEmitters } from "../models/SocketEmitters";
