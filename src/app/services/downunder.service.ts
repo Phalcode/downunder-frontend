@@ -1,9 +1,11 @@
-import { Injectable, NgZone } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Socket } from "ngx-socket-io";
 import { Observable } from "rxjs";
 import { environment } from "../../environments/environment";
 import { IPlayer } from "../../models/IPlayer";
 import { ISession } from "../../models/ISession";
+import { SocketEmitters } from "../models/SocketEmitters";
+import { SocketReceivers } from "../models/SocketReceivers";
 
 @Injectable({
   providedIn: "root"
@@ -12,69 +14,29 @@ export class DownUnderService {
   public session: ISession;
   public player: IPlayer;
 
-  constructor(private http: HttpClient, private zone: NgZone) {}
-
-  private getEventSource(url: string): EventSource {
-    return new EventSource(url);
-  }
-
-  streamSession(sessionId: string, playerId: string): Observable<ISession> {
-    const url = `${environment.backendUrl}/session/${sessionId}/player/${playerId}`;
-    return new Observable((observer) => {
-      const eventSource = this.getEventSource(url);
-      eventSource.onmessage = (message) => {
-        this.zone.run(() => {
-          console.log("Data Received from Eventstream.");
-          const session = JSON.parse(message.data) as ISession;
-          observer.next(session);
-        });
-      };
-      eventSource.onopen = () => {
-        this.zone.run(() => {
-          this.handshake(sessionId, playerId).subscribe(() => {
-            console.log("Handshake complete.");
-          });
-        });
-      };
-      eventSource.onerror = (error) => {
-        this.zone.run(() => {
-          console.log("Failed Receiving Data from Eventstream.", error);
-          observer.error(error);
-        });
-      };
-    });
-  }
-
-  handshake(sessionId: string, playerId: string): Observable<unknown> {
-    return this.http.get<unknown>(`${environment.backendUrl}/session/${sessionId}/player/${playerId}/handshake`);
+  constructor(private socket: Socket) {
+    socket.fromEvent<ISession>(SocketReceivers.SESSION).subscribe((session) => (this.session = session));
+    socket.fromEvent<IPlayer>(SocketReceivers.PLAYER).subscribe((player) => (this.player = player));
   }
 
   createSession(sessionInformation: ISession): Observable<ISession> {
-    return this.http.post<ISession>(`${environment.backendUrl}/session`, sessionInformation);
+    this.socket.emit(SocketEmitters.CREATE_SESSION, sessionInformation);
+    return this.socket.fromEvent(SocketReceivers.SESSION);
   }
 
-  deleteSession(sessionId: string): Observable<unknown> {
-    return this.http.delete<unknown>(`${environment.backendUrl}/session/${sessionId}`);
-  }
-
-  createPlayer(sessionId: string, playerInformation: IPlayer): Observable<IPlayer> {
-    return this.http.post<IPlayer>(`${environment.backendUrl}/session/${sessionId}/player`, playerInformation);
-  }
-
-  deletePlayer(sessionId: string, playerId: string): Observable<unknown> {
-    return this.http.delete<unknown>(`${environment.backendUrl}/session/${sessionId}/player/${playerId}`);
+  joinSession(sessionId: string, playerInformation: IPlayer): Observable<IPlayer> {
+    this.socket.emit(SocketEmitters.JOIN_SESSION, sessionId, playerInformation);
+    return this.socket.fromEvent(SocketReceivers.PLAYER);
   }
 
   playCard(sessionId: string, playerId: string, cardId: string): Observable<ISession> {
-    return this.http.post<ISession>(`${environment.backendUrl}/session/${sessionId}/player/${playerId}/play/${cardId}`, null);
-  }
-
-  endTurn(sessionId: string, playerId: string): Observable<unknown> {
-    return this.http.post<unknown>(`${environment.backendUrl}/session/${sessionId}/player/${playerId}/turn`, null);
+    this.socket.emit(SocketEmitters.JOIN_SESSION, sessionId, playerId, cardId);
+    return this.socket.fromEvent(SocketReceivers.SESSION);
   }
 
   resetSession(sessionId: string): Observable<ISession> {
-    return this.http.delete<ISession>(`${environment.backendUrl}/session/${sessionId}`);
+    this.socket.emit(SocketEmitters.JOIN_SESSION, sessionId);
+    return this.socket.fromEvent(SocketReceivers.SESSION);
   }
 
   playSound(file: string): void {

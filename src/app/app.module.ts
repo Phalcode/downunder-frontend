@@ -19,6 +19,7 @@ import { NotfoundComponent } from "./components/notfound/notfound.component";
 import { NullToDefaultDirective } from "./directives/nullToDefault.directive";
 import { AutofocusDirective } from "./directives/autofocus.directive";
 import { DownUnderService } from "./services/downunder.service";
+import { SocketIoModule, SocketIoConfig } from "ngx-socket-io";
 
 const ACKEE_CONFIG: AckeeConfig = {
   tracker: "https://ackee.platform.alfagun74.de/tracker.js",
@@ -30,6 +31,8 @@ const ACKEE_CONFIG: AckeeConfig = {
   },
   dev: environment.production
 };
+
+const config: SocketIoConfig = { url: environment.backendUrl, options: {} };
 
 @NgModule({
   declarations: [
@@ -45,6 +48,7 @@ const ACKEE_CONFIG: AckeeConfig = {
   imports: [
     AckeeModule.forRoot(ACKEE_CONFIG),
     BrowserModule,
+    SocketIoModule.forRoot(config),
     AppRoutingModule,
     HttpClientModule,
     FormsModule,

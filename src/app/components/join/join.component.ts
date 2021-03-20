@@ -16,8 +16,7 @@ export class JoinComponent {
   }
 
   joinSession(): void {
-    this.service.createPlayer(this.sessionId, { username: this.username }).subscribe((player: IPlayer) => {
-      this.service.player = player;
+    this.service.joinSession(this.sessionId, { username: this.username }).subscribe((player: IPlayer) => {
       sessionStorage.setItem("playerId", player.id);
       void this.router.navigate(["/game", this.sessionId]);
     });

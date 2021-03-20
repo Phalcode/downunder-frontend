@@ -29,16 +29,8 @@ export class CreateComponent {
         SETTING_MAX_PLAYERS: this.maxPlayers,
         SETTING_CHIPS: this.playerChips
       })
-      .subscribe(
-        (session: ISession) => {
-          this.service.session = session;
-        },
-        (error) => {
-          console.error(error);
-        },
-        () => {
-          void this.router.navigate(["/join", this.service.session.id]);
-        }
-      );
+      .subscribe((session: ISession) => {
+        void this.router.navigate(["/join", session.id]);
+      });
   }
 }

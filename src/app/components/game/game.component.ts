@@ -54,10 +54,6 @@ export class GameComponent implements OnInit, OnDestroy {
     this.service.playCard(this.sessionId, this.playerId, cardId).subscribe((session: ISession) => this.refreshInfo(session));
   }
 
-  endTurn(): void {
-    this.service.endTurn(this.sessionId, this.playerId).subscribe((session: ISession) => this.refreshInfo(session));
-  }
-
   getCountColor(count: number): string {
     let value = count / 77;
     if (value > 1) value = 1;

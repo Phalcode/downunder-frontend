@@ -1,0 +1,6 @@
+export enum SocketEmitters {
+  CREATE_SESSION = "CREATE_SESSION",
+  JOIN_SESSION = "JOIN_SESSION",
+  RESET_SESSION = "RESET_SESSION",
+  PLAY = "PLAY"
+}
