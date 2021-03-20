@@ -7,6 +7,9 @@ import { ISession } from "../../../models/ISession";
 import { PlayerStateEnum } from "../../../models/PlayerStateEnum";
 import confetti from "canvas-confetti";
 import { Title } from "@angular/platform-browser";
+import { take } from "rxjs/operators";
+import { SocketEmitters } from "src/app/models/SocketEmitters";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-game",
@@ -20,26 +23,31 @@ export class GameComponent implements OnInit, OnDestroy {
   sessionId: string;
   playerId: string;
   lastCard: ICard;
+  sessionSubscription: Subscription;
 
   constructor(public service: DownUnderService, private router: Router, private route: ActivatedRoute, private titleService: Title) {}
 
   ngOnInit(): void {
     this.sessionId = this.route.snapshot.paramMap.get("sessionId");
     this.playerId = sessionStorage.getItem("playerId") ?? this.service.player?.id;
-    console.log("Player: " + this.playerId);
     console.log("Session: " + this.sessionId);
+    console.log("Player: " + this.playerId);
     if (!this.sessionId || !this.playerId) {
       void this.router.navigate(["/join", this.sessionId]);
       return;
     }
+    this.sessionSubscription = this.service.getSession(this.sessionId, this.playerId).subscribe((session) => {
+      this.refreshInfo(session);
+    });
   }
 
   ngOnDestroy(): void {
     sessionStorage.removeItem("playerId");
+    if (this.sessionSubscription) this.sessionSubscription.unsubscribe();
   }
 
   playCard(cardId: string): void {
-    this.service.playCard(this.sessionId, this.playerId, cardId).subscribe((session: ISession) => this.refreshInfo(session));
+    this.service.playCard(this.sessionId, this.playerId, cardId);
   }
 
   getCountColor(count: number): string {

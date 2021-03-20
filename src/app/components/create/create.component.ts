@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { DownUnderService } from "../../services/downunder.service";
 import { ISession } from "../../../models/ISession";
+import { take } from "rxjs/operators";
 
 @Component({
   selector: "app-create",
@@ -29,7 +30,9 @@ export class CreateComponent {
         SETTING_MAX_PLAYERS: this.maxPlayers,
         SETTING_CHIPS: this.playerChips
       })
+      .pipe(take(1))
       .subscribe((session: ISession) => {
+        this.service.session = session;
         void this.router.navigate(["/join", session.id]);
       });
   }

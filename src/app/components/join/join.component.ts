@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { take } from "rxjs/operators";
 import { DownUnderService } from "../../../app/services/downunder.service";
 import { IPlayer } from "../../../models/IPlayer";
 @Component({
@@ -16,9 +17,13 @@ export class JoinComponent {
   }
 
   joinSession(): void {
-    this.service.joinSession(this.sessionId, { username: this.username }).subscribe((player: IPlayer) => {
-      sessionStorage.setItem("playerId", player.id);
-      void this.router.navigate(["/game", this.sessionId]);
-    });
+    this.service
+      .joinSession(this.sessionId, { username: this.username })
+      .pipe(take(1))
+      .subscribe((player: IPlayer) => {
+        this.service.player = player;
+        sessionStorage.setItem("playerId", player.id);
+        void this.router.navigate(["/game", this.sessionId]);
+      });
   }
 }

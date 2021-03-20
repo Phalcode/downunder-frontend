@@ -13,29 +13,39 @@ export class DownUnderService {
   public session: ISession;
   public player: IPlayer;
 
-  constructor(private socket: Socket) {
-    socket.fromEvent<ISession>(SocketReceivers.SESSION).subscribe((session) => (this.session = session));
-    socket.fromEvent<IPlayer>(SocketReceivers.PLAYER).subscribe((player) => (this.player = player));
+  constructor(private socket: Socket) {}
+
+  observeSession(): Observable<ISession> {
+    return this.socket.fromEvent<ISession>(SocketReceivers.SESSION);
+  }
+
+  observePlayer(): Observable<IPlayer> {
+    return this.socket.fromEvent<IPlayer>(SocketReceivers.PLAYER);
   }
 
   createSession(sessionInformation: ISession): Observable<ISession> {
     this.socket.emit(SocketEmitters.CREATE_SESSION, sessionInformation);
-    return this.socket.fromEvent(SocketReceivers.SESSION);
+    return this.observeSession();
   }
 
   joinSession(sessionId: string, playerInformation: IPlayer): Observable<IPlayer> {
     this.socket.emit(SocketEmitters.JOIN_SESSION, sessionId, playerInformation);
-    return this.socket.fromEvent(SocketReceivers.PLAYER);
+    return this.observePlayer();
+  }
+
+  getSession(sessionId: string, playerId: string): Observable<ISession> {
+    this.socket.emit(SocketEmitters.GET_SESSION);
+    return this.observeSession();
   }
 
   playCard(sessionId: string, playerId: string, cardId: string): Observable<ISession> {
-    this.socket.emit(SocketEmitters.JOIN_SESSION, sessionId, playerId, cardId);
-    return this.socket.fromEvent(SocketReceivers.SESSION);
+    this.socket.emit(SocketEmitters.PLAY, sessionId, playerId, cardId);
+    return this.observeSession();
   }
 
   resetSession(sessionId: string): Observable<ISession> {
-    this.socket.emit(SocketEmitters.JOIN_SESSION, sessionId);
-    return this.socket.fromEvent(SocketReceivers.SESSION);
+    this.socket.emit(SocketEmitters.RESET_SESSION, sessionId);
+    return this.observeSession();
   }
 
   playSound(file: string): void {
