@@ -32,7 +32,7 @@ const ACKEE_CONFIG: AckeeConfig = {
   dev: environment.production
 };
 
-const config: SocketIoConfig = { url: environment.backendUrl, options: {} };
+const config: SocketIoConfig = { url: environment.backendUrl };
 
 @NgModule({
   declarations: [
