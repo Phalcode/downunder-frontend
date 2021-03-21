@@ -18,7 +18,6 @@ import { GameComponent } from "./components/game/game.component";
 import { NotfoundComponent } from "./components/notfound/notfound.component";
 import { NullToDefaultDirective } from "./directives/nullToDefault.directive";
 import { AutofocusDirective } from "./directives/autofocus.directive";
-import { DownUnderService } from "./services/downunder.service";
 import { SocketIoModule, SocketIoConfig } from "ngx-socket-io";
 
 const ACKEE_CONFIG: AckeeConfig = {
