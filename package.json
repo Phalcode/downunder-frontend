@@ -1,6 +1,6 @@
 {
   "name": "downunder-client",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "authors": [
     "Alfagun74"
   ],
@@ -10,7 +10,8 @@
     "prod": "ng build --prod --aot",
     "deploy": "npm --no-git-tag-version version patch",
     "build": "ng build",
-    "lint": "ng lint --fix"
+    "lint": "ng lint --fix",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
