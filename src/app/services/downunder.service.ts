@@ -15,14 +15,11 @@ export class DownUnderService {
   public errorMessages: string[] = [];
 
   constructor(private socket: Socket) {
-    console.log("Hello");
     this.observeErrors().subscribe((err) => {
       this.errorMessages.push(err);
       console.error(err);
     });
   }
-
-  desc
 
   observeSession(): Observable<ISession> {
     return this.socket.fromEvent<ISession>(SocketReceivers.SESSION);
