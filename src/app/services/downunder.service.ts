@@ -19,6 +19,7 @@ export class DownUnderService {
     this.observeErrors().subscribe((err) => {
       this.errorMessages.push(err);
       console.error(err);
+      alert(err);
     });
   }
 
