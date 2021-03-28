@@ -54,6 +54,10 @@ export class GameComponent implements OnInit, OnDestroy {
     return `hsl(0,100%,${100 - 42 * value}%)`;
   }
 
+  toggleSounds(): void {
+    this.service.soundsEnabled = !this.service.soundsEnabled;
+  }
+
   private refreshInfo(session: ISession): void {
     const player = session.players.find((player: IPlayer) => player.id === this.playerId);
     const playerPos = session.players.indexOf(player);

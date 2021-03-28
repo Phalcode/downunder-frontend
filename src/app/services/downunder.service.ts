@@ -13,6 +13,7 @@ export class DownUnderService {
   public session: ISession;
   public player: IPlayer;
   public errorMessages: string[] = [];
+  public soundsEnabled = false;
 
   constructor(private socket: Socket) {
     this.observeErrors().subscribe((err) => {
@@ -59,6 +60,7 @@ export class DownUnderService {
   }
 
   playSound(file: string): void {
+    if (!this.soundsEnabled) return;
     const audio = new Audio();
     audio.src = `../../assets/sounds/${file}`;
     audio.load();

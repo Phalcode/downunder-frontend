@@ -1,5 +1,22 @@
 <span class="flex flex-col p-5 h-screen">
-  <h1 class="text-white font-semibold text-xl sm:text-2xl md:text-3xl mb-5">{{service.session?.SETTING_NAME}}</h1>
+  <span class="flex flex-row">
+    <h1 class="text-white font-semibold text-xl sm:text-2xl md:text-3xl">{{service.session?.SETTING_NAME}}</h1>
+    <span class="flex-grow"></span>
+    <svg
+      class="mb-5 cursor-pointer float-right"
+      (click)="toggleSounds()"
+      xmlns="http://www.w3.org/2000/svg"
+      version="1.0"
+      width="2rem"
+      height="2rem"
+      viewBox="0 0 75 75"
+      stroke="#FFF"
+      stroke-width="5"
+    >
+      <path d="m39,14-17,15H6V48H22l17,15z" fill="none" stroke-linejoin="round" />
+      <path *ngIf="!service.soundsEnabled" d="m49,26 20,24m0-24-20,24" fill="none" stroke-linecap="round" />
+    </svg>
+  </span>
   <span class="flex flex-col flex-grow items-center justify-center">
     <!--Players-->
     <div class="w-full grid grid-rows-1 gap-6">
