@@ -13,7 +13,7 @@ export class DownUnderService {
   public session: ISession;
   public player: IPlayer;
   public errorMessages: string[] = [];
-  public soundsEnabled = false;
+  public soundsEnabled = localStorage.getItem("soundsEnabled") === "true";
 
   constructor(private socket: Socket) {
     this.observeErrors().subscribe((err) => {

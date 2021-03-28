@@ -56,6 +56,7 @@ export class GameComponent implements OnInit, OnDestroy {
 
   toggleSounds(): void {
     this.service.soundsEnabled = !this.service.soundsEnabled;
+    localStorage.setItem("soundsEnabled", this.service.soundsEnabled.toString());
   }
 
   private refreshInfo(session: ISession): void {
