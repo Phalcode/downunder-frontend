@@ -1,5 +1,6 @@
 # Stage 1
-FROM node:14.15.4-alpine as build
+FROM node:lts-alpine as build
+RUN apk add --no-cache tzdata
 ENV TZ=Europe/Berlin
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 WORKDIR /usr/src/app
